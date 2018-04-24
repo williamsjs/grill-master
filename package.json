@@ -5,6 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "webpack-dev-server --mode development --open",
     "build": "webpack --mode development",
     "build:prod": "webpack --mode production"
   },
@@ -12,11 +13,14 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
     "node-sass": "^4.8.3",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
     "sass-loader": "^7.0.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
