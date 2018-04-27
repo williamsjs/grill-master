@@ -1,9 +1,12 @@
 import React from 'react';
+import Nav from '../Nav/Nav';
 
 const App = () => {
   return (
-    <h1>Hello, World</h1>
-  );
+    <div className="container">
+      <Nav />
+    </div>
+  )
 };
 
 export default App;
