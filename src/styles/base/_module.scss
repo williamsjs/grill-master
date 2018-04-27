@@ -1,8 +1,16 @@
 html {
   box-sizing: border-box;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
 }
