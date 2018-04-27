@@ -7,6 +7,10 @@ const Nav = () => {
       <li><a href="#">Recipes</a></li>
       <li><a href="#">Calendar</a></li>
       <li><a href="#">Login</a></li>
+      <form>
+        <input type="search" />
+        <button type="submit">Search</button>
+      </form>
     </nav>
   );
 }
