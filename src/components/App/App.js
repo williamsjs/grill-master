@@ -5,7 +5,7 @@ const App = () => {
   return (
     <div className="container">
       <Nav />
-      <h1>Beer, Grill, and Chill</h1>
+      <h1>Grill Beer</h1>
     </div>
   )
 };
