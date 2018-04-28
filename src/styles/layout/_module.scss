@@ -12,7 +12,12 @@
   justify-content: flex-end;
   font-family: $secondary-font;
   font-weight: bold;
-  background: black;
+  background: $primary-blue;
+
+  .title {
+    color: $primary-green;
+    text-shadow: 1px 1px 1px $primary;
+  }
 
   input[type="search"] {
     border-radius: 3px;
@@ -20,8 +25,16 @@
   }
 
   button[type="submit"] {
-    margin-left: -35px;
+    margin-left: -33px;
+    border-radius: 0 3px 3px 0;
+    height: 22px;
     @include remove-props(border-right, border-top, border-bottom);
+
+    &:hover {
+      background: $primary-green;
+      color: $primary;
+      cursor: pointer;
+    }
   }
 
   > * {
