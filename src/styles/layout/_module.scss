@@ -10,13 +10,17 @@
   padding-bottom: 20px;
   display: flex;
   justify-content: flex-end;
-  font-family: $secondary-font;
-  font-weight: bold;
+  font-family: $primary-font;
   background: $primary-blue;
 
   .title {
-    color: $primary-green;
-    text-shadow: 1px 1px 1px $primary;
+    color: $primary;
+    font-family: $secondary-font;
+    margin-right: auto;
+    font-size: 1.6rem;
+    letter-spacing: .05rem;
+    color: $primary-yellow;
+    text-shadow: 1px 1px 1px #000;
   }
 
   input[type="search"] {
@@ -37,14 +41,13 @@
     }
   }
 
+  .nav-item a:hover {
+    color: black;
+  }
+
   > * {
     margin: auto 20px;
     font-size: 1.1rem;
-  }
-
-  .nav-item:first-child {
-    margin-right: auto;
-    font-size: 1.6rem;
   }
 
 }
