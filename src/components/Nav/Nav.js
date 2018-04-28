@@ -8,7 +8,7 @@ import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
 const Nav = () => {
   return (
     <nav className="main-nav">
-      <h1 className="title nav-item">Beer Meat</h1>
+      <h1 className="title nav-item">Grill Master</h1>
       <li className="nav-item"><a href="#"><IoBonfire />What's Hot</a></li>
       <li className="nav-item"><a href="#"><IoFork />Meat</a></li>
       <li className="nav-item"><a href="#"><IoBeer /> Beer</a></li>

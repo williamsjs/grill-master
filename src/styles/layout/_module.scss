@@ -6,12 +6,13 @@
 }
 
 .main-nav {
+  width: 100%;
+  position: fixed;
   padding-top: 15px;
   padding-bottom: 20px;
   display: flex;
   justify-content: flex-end;
   font-family: $primary-font;
-  background: $primary-blue;
 
   .title {
     color: $primary;
@@ -19,7 +20,7 @@
     margin-right: auto;
     font-size: 1.6rem;
     letter-spacing: .05rem;
-    color: $primary-yellow;
+    color: $lemon;
     text-shadow: 1px 1px 1px #000;
   }
 
@@ -35,7 +36,7 @@
     @include remove-props(border-right, border-top, border-bottom);
 
     &:hover {
-      background: $primary-green;
+      background: $watermelon;
       color: $primary;
       cursor: pointer;
     }
