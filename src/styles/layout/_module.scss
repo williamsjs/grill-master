@@ -9,7 +9,16 @@
 .main-nav {
   margin: 20px auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
   font-family: $secondary-font;
   font-weight: bold;
+
+  > * {
+    margin: auto 20px;
+  }
+
+  .nav-item:first-child {
+    margin-right: auto;
+  }
+
 }
