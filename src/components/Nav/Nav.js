@@ -38,7 +38,7 @@ class Nav extends Component {
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
         </form>
-        <li className="nav-item contact"><a href="#"><IoIosContact /></a></li>
+        <li className="nav-item profile"><a href="#"><IoIosContact /></a></li>
       </nav>
     );
   }
