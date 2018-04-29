@@ -15,6 +15,22 @@
   font-family: $primary-font;
   transition: background-color .2s ease-in;
 
+  @media screen and (max-width: 1200px) {
+    flex-flow: column;
+    justify-content: flex-start;
+    width: 250px;
+    height: 100%;
+    background: $ocean;
+
+    .nav-item {
+      margin: 30px 20px;
+    }
+
+    input[type="search"] {
+      width: 200px;
+    }
+  }
+
   .title {
     color: $primary;
     font-family: $secondary-font;
