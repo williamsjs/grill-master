@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import NavItem from './NavItem';
+import MenuButton from '../shared/MenuButton/MenuButton';
 import IoBeer from 'react-icons/lib/io/beer';
 import IoFork from 'react-icons/lib/io/fork';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
@@ -11,8 +12,9 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = { navClass: 'main-nav' };
+    this.state = { navClass: 'main-nav', menuOpen: false };
     this.onscroll = this.onscroll.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -29,10 +31,16 @@ class Nav extends Component {
     this.setState({navClass: className});
   }
 
+  handleClick() {
+    this.setState({menuOpen: !this.state.menuOpen});
+  }
+
   render() {
+    const {navClass, menuOpen} = this.state;
+
     return (
-      <nav className={this.state.navClass}>
-        <h1 className="title nav-item">Grill Master</h1>
+      <nav className={navClass}>
+        <h1 className="title nav-item">Grill Master <MenuButton menuOpen={menuOpen} handleClick={this.handleClick} /></h1>
         <NavItem link="/whats-hot" icon={<IoBonfire />} linkText="What's Hot" />
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" />
         <NavItem link="/meat" icon={<IoFork />} linkText="Meat" />
