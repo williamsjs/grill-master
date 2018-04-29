@@ -4,6 +4,7 @@ import IoFork from 'react-icons/lib/io/fork';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
 import IoBonfire from 'react-icons/lib/io/bonfire';
 import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
+import './Nav.scss';
 
 class Nav extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class Nav extends Component {
     window.removeEventListener('scroll', this.onscroll)
   }
 
-  onscroll(e) {
+  onscroll() {
     const top = window.pageYOffset || document.documentElement.scrollTop;
     const className = top < 70 ? 'main-nav' : 'main-nav scrolled';
     this.setState({navClass: className});
@@ -37,7 +38,7 @@ class Nav extends Component {
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
         </form>
-        <li className="nav-item"><a href="#"><IoIosContact /></a></li>
+        <li className="nav-item contact"><a href="#"><IoIosContact /></a></li>
       </nav>
     );
   }
