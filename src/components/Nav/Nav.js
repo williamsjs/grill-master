@@ -31,9 +31,9 @@ class Nav extends Component {
     return (
       <nav className={this.state.navClass}>
         <h1 className="title nav-item">Grill Master</h1>
-        <li className="nav-item"><a href="#"><IoBonfire />What's Hot</a></li>
-        <li className="nav-item"><a href="#"><IoFork />Meat</a></li>
-        <li className="nav-item"><a href="#"><IoBeer /> Beer</a></li>
+        <li className="nav-item"><a href="#"><IoBonfire />&nbsp;What's Hot</a></li>
+        <li className="nav-item"><a href="#"><IoFork />&nbsp;Meat</a></li>
+        <li className="nav-item"><a href="#"><IoBeer />&nbsp;Beer</a></li>
         <form className="nav-item search-item">
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
