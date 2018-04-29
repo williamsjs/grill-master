@@ -39,13 +39,14 @@
     color: $primary;
 
     &:hover {
-      background: $plum;
+      background: $primary;
       cursor: pointer;
+      color: $watermelon;
     }
   }
 
   .nav-item a:hover {
-    color: 	$plum;
+    color: 	$primary;
   }
 
   > * {

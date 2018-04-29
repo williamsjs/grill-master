@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import NavItem from './NavItem';
 import IoBeer from 'react-icons/lib/io/beer';
 import IoFork from 'react-icons/lib/io/fork';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
 import IoBonfire from 'react-icons/lib/io/bonfire';
 import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
 import './Nav.scss';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
@@ -32,11 +33,9 @@ class Nav extends Component {
     return (
       <nav className={this.state.navClass}>
         <h1 className="title nav-item">Grill Master</h1>
-        <li className="nav-item">
-          <Link to="/whats-hot"><IoBonfire />&nbsp;What's Hot</Link>
-        </li>
-        <li className="nav-item"><a href="#"><IoFork />&nbsp;Meat</a></li>
-        <li className="nav-item"><a href="#"><IoBeer />&nbsp;Beer</a></li>
+        <NavItem link="/whats-hot" icon={<IoBonfire />} linkText="What's Hot" />
+        <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" />
+        <NavItem link="/meat" icon={<IoFork />} linkText="Meat" />
         <form className="nav-item search-item">
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
