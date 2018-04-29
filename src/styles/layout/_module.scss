@@ -15,28 +15,6 @@
   font-family: $primary-font;
   transition: background-color .2s ease-in;
 
-  @media screen and (max-width: 1200px) {
-    flex-flow: column;
-    justify-content: flex-start;
-    width: 250px;
-    height: 100%;
-    background: $ocean;
-
-    .nav-item {
-      margin: 30px 20px;
-    }
-
-    input[type="search"] {
-      width: 200px;
-    }
-
-    .nav-item.profile {
-      margin-left: 20px;
-      order: 1;
-    }
-
-  }
-
   .title {
     color: $primary;
     font-family: $secondary-font;
@@ -55,18 +33,19 @@
   button[type="submit"] {
     margin-left: -33px;
     border-radius: 0 3px 3px 0;
-    height: 21px;
+    height: 22px;
     @include remove-props(border-right, border-top, border-bottom);
+    background: $watermelon;
+    color: $primary;
 
     &:hover {
-      background: $watermelon;
-      color: $primary;
+      background: $plum;
       cursor: pointer;
     }
   }
 
   .nav-item a:hover {
-    color: black;
+    color: 	$plum;
   }
 
   > * {
@@ -77,6 +56,39 @@
   .profile {
     font-size: 1.5rem;
     margin-left: 0;
+  }
+
+  @media screen and (max-width: 1200px) {
+    flex-flow: column;
+    justify-content: flex-start;
+    width: 250px;
+    height: 100%;
+    background: $ocean;
+
+    .nav-item {
+      margin: 30px 20px;
+    }
+
+    input[type="search"] {
+      width: 200px;
+    }
+
+    .search-item {
+      order: 2;
+    }
+
+    .nav-item.profile {
+      margin-left: 20px;
+      order: 3;
+    }
+
+    .title {
+      order: 1;
+    }
+
+    > * {
+      order: 4;
+    }
   }
 
 }
