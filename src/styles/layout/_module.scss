@@ -31,7 +31,7 @@
   }
 
   button[type="submit"] {
-    margin-left: -33px;
+    margin-left: -32px;
     border-radius: 0 3px 3px 0;
     height: 22px;
     @include remove-props(border-right, border-top, border-bottom);
@@ -58,12 +58,20 @@
     margin-left: 0;
   }
 
-  @media screen and (max-width: 1200px) {
+  .profile-text {
+    display: none;
+  }
+
+  @media screen and (max-width: 1024px) and (min-width: 768px) {
     flex-flow: column;
     justify-content: flex-start;
     width: 250px;
     height: 100%;
     background: $ocean;
+
+    .profile-text {
+      display: inline-block;
+    }
 
     .nav-item {
       margin: 30px 20px;
@@ -80,9 +88,12 @@
     .nav-item.profile {
       margin-left: 20px;
       order: 3;
+      font-size: 1.1rem;
     }
 
     .title {
+      margin-top: 0;
+      margin-bottom: 15px;
       order: 1;
     }
 
