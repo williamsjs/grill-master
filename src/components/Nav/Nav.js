@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
 import IoBeer from 'react-icons/lib/io/beer';
 import IoFork from 'react-icons/lib/io/fork';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
@@ -31,7 +32,9 @@ class Nav extends Component {
     return (
       <nav className={this.state.navClass}>
         <h1 className="title nav-item">Grill Master</h1>
-        <li className="nav-item"><a href="#"><IoBonfire />&nbsp;What's Hot</a></li>
+        <li className="nav-item">
+          <Link to="/whats-hot"><IoBonfire />&nbsp;What's Hot</Link>
+        </li>
         <li className="nav-item"><a href="#"><IoFork />&nbsp;Meat</a></li>
         <li className="nav-item"><a href="#"><IoBeer />&nbsp;Beer</a></li>
         <form className="nav-item search-item">
@@ -40,7 +43,7 @@ class Nav extends Component {
         </form>
         <li className="nav-item profile">
           <a href="#"><IoIosContact />&nbsp;
-            <span class="profile-text">My Profile</span>
+            <span className="profile-text">My Profile</span>
           </a>
         </li>
       </nav>
