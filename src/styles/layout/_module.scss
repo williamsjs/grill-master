@@ -63,7 +63,7 @@
     display: none;
   }
 
-  @media screen and (max-width: 1024px) and (min-width: 768px) {
+  @include medium-screen() {
     flex-flow: column;
     justify-content: flex-start;
     width: 250px;
@@ -107,4 +107,13 @@
 
 .scrolled {
   background-color: $ocean;
+}
+
+.page {
+  margin-top: 50px;
+
+  @include medium-screen() {
+    margin-left: 270px;
+    margin-top: 0;
+  }
 }
