@@ -107,7 +107,7 @@
 }
 
 .closed {
-  @include medium() {
+  @include medium-to-small() {
     margin-left: -250px;
     transition: margin-left 1s;
   }
@@ -119,9 +119,9 @@
 
 .page {
   margin-top: 50px;
-  transition: all 1s;
   @include medium() {
     margin-left: 0;
+    transition: all 1s;
   }
 }
 
