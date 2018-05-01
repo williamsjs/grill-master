@@ -107,8 +107,10 @@
 }
 
 .closed {
-  margin-left: -250px;
-  transition: margin-left 1s;
+  @include medium() {
+    margin-left: -250px;
+    transition: margin-left 1s;
+  }
 }
 
 .scrolled {
