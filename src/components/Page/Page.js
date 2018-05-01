@@ -4,9 +4,9 @@ import WhatsHotPage from '../pages/WhatsHotPage/WhatsHotPage';
 import BeerPage from '../pages/BeerPage/BeerPage';
 import MeatPage from '../pages/MeatPage/MeatPage';
 
-const Page = () => {
+const Page = ({menuOpen}) => {
   return (
-    <div className="page">
+    <div className={menuOpen ? "page open" : "page"}>
       <Switch>
         <Route exact path="/whats-hot" component={WhatsHotPage} />
         <Route exact path="/beer" component={BeerPage} />

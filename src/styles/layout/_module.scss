@@ -64,7 +64,7 @@
     display: none;
   }
 
-  @include medium-screen() {
+  @include medium-to-small() {
     flex-flow: column;
     justify-content: flex-start;
     width: 250px;
@@ -117,8 +117,15 @@
 
 .page {
   margin-top: 50px;
+  transition: all 1s;
+  @include medium() {
+    margin-left: 0;
+  }
+}
 
-  @include medium-screen() {
+.page.open {
+  @include medium() {
+    transition: all 1s;
     margin-left: 270px;
     margin-top: 0;
   }
