@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
 import IoBeer from 'react-icons/lib/io/beer';
-import IoFork from 'react-icons/lib/io/fork';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
-import IoBonfire from 'react-icons/lib/io/bonfire';
+import IoFireball from 'react-icons/lib/io/fireball';
 import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
+import MdRestaurant from 'react-icons/lib/md/restaurant';
+
 import './Nav.scss';
 import { Link } from 'react-router-dom';
 
@@ -41,9 +42,9 @@ class Nav extends Component {
     return (
       <nav className={this.navClass()}>
         <h1 className="title nav-item">Grill Master <MenuButton menuOpen={this.props.menuOpen} handleClick={this.props.handleClick} /></h1>
-        <NavItem link="/whats-hot" icon={<IoBonfire />} linkText="What's Hot" />
+        <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot" />
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" />
-        <NavItem link="/meat" icon={<IoFork />} linkText="Meat" />
+        <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat" />
         <form className="nav-item search-item">
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
