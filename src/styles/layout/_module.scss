@@ -14,6 +14,7 @@
   justify-content: flex-end;
   font-family: $primary-font;
   transition: background-color .2s ease-in;
+  transition: margin-left 1s;
 
   .title {
     color: $primary;
@@ -103,6 +104,11 @@
     }
   }
 
+}
+
+.closed {
+  margin-left: -250px;
+  transition: margin-left 1s;
 }
 
 .scrolled {

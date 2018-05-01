@@ -12,9 +12,10 @@ import { Link } from 'react-router-dom';
 class Nav extends Component {
   constructor(props) {
     super(props);
-    this.state = { navClass: 'main-nav', menuOpen: false };
+    this.state = { navClass: 'main-nav', menuOpen: true };
     this.onscroll = this.onscroll.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.navClass = this.navClass.bind(this);
   }
 
   componentDidMount() {
@@ -35,11 +36,15 @@ class Nav extends Component {
     this.setState({menuOpen: !this.state.menuOpen});
   }
 
+  navClass() {
+    return this.state.menuOpen ? this.state.navClass : this.state.navClass + ' closed';
+  }
+
   render() {
     const {navClass, menuOpen} = this.state;
 
     return (
-      <nav className={navClass}>
+      <nav className={this.navClass()}>
         <h1 className="title nav-item">Grill Master <MenuButton menuOpen={menuOpen} handleClick={this.handleClick} /></h1>
         <NavItem link="/whats-hot" icon={<IoBonfire />} linkText="What's Hot" />
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" />

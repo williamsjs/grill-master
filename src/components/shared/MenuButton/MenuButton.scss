@@ -5,7 +5,9 @@
   display: none;
   cursor: pointer;
   vertical-align: middle;
-  margin-left: 30px;
+  position: absolute;
+  margin-left: 120px;
+  transition: all 1s;
 
   @include medium-screen() {
     display: inline-block;
@@ -17,16 +19,22 @@
   height: 5px;
   background-color: $lemon;
   margin: 4px 0;
-  transition: 0.4s;
+  transition: all 0.4s;
 }
 
-.closed .bar1 {
+.bar-container.open {
+  position: block;
+  margin-left: 30px;
+  transition: all 1s;
+}
+
+.open .bar1 {
   transform: rotate(-45deg) translate(-7px, 6px);
 }
 
-.closed .bar2 {opacity: 0;}
+.open .bar2 {opacity: 0;}
 
-.closed .bar3 {
+.open .bar3 {
   transform: rotate(45deg) translate(-6px, -8px);
 }
 
