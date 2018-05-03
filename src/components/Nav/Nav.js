@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { toggleMenu } from '../../js/actions/index';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
 import IoBeer from 'react-icons/lib/io/beer';
@@ -10,16 +11,21 @@ import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
 import MdRestaurant from 'react-icons/lib/md/restaurant';
 import './Nav.scss';
 
+const mapDispatchToProps = dispatch => ({
+    toggleMenu: () => dispatch(toggleMenu())
+});
+
 const mapStateToProps = state => {
-  return state;
+  return {menuOpen: state.menuOpen};
 }
 
-class Nav extends Component {
-  constructor(props) {
-    super(props);
+class ConnectedNav extends Component {
+  constructor() {
+    super();
     this.state = { navClass: 'main-nav' };
     this.onscroll = this.onscroll.bind(this);
     this.navClass = this.navClass.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -40,12 +46,16 @@ class Nav extends Component {
     return this.props.menuOpen ? this.state.navClass : this.state.navClass + ' closed';
   }
 
+  handleClick() {
+    this.props.toggleMenu();
+  }
+
   render() {
     const {navClass} = this.state;
 
     return (
       <nav className={this.navClass()}>
-        <h1 className="title nav-item">Grill Master <MenuButton menuOpen={this.props.menuOpen} handleClick={this.props.handleClick} /></h1>
+        <h1 className="title nav-item">Grill Master <MenuButton handleClick={this.handleClick} /></h1>
         <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot" />
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" />
         <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat" />
@@ -62,5 +72,7 @@ class Nav extends Component {
     );
   }
 }
+
+const Nav = connect(mapStateToProps, mapDispatchToProps)(ConnectedNav);
 
 export default Nav;

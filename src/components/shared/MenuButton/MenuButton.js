@@ -1,7 +1,12 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './MenuButton.scss';
 
-const MenuButton = ({menuOpen, handleClick}) => {
+const mapStateToProps = state => ({
+  menuOpen: state.menuOpen
+});
+
+const ConnectedMenuButton = ({menuOpen, handleClick}) => {
   return (
     <div className={menuOpen ? 'bar-container open' : 'bar-container'} onClick={handleClick}>
       <div className="bar1"></div>
@@ -10,5 +15,7 @@ const MenuButton = ({menuOpen, handleClick}) => {
     </div>
   );
 };
+
+const MenuButton = connect(mapStateToProps)(ConnectedMenuButton);
 
 export default MenuButton;
