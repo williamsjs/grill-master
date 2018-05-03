@@ -2,6 +2,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
+  output: {
+    publicPath: '/'
+  },
   module: {
     rules: [
       { 
@@ -40,6 +43,9 @@ module.exports = {
         use: ['html-loader']
       }
     ]
+  },
+  devServer: {
+    historyApiFallback: true
   },
   plugins: [
     new HtmlWebpackPlugin({
