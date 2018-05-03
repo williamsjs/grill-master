@@ -1,10 +1,15 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import WhatsHotPage from '../pages/WhatsHotPage/WhatsHotPage';
 import BeerPage from '../pages/BeerPage/BeerPage';
 import MeatPage from '../pages/MeatPage/MeatPage';
 
-const Page = ({menuOpen}) => {
+const mapStateToProps = state => {
+  return { menuOpen: state.menuOpen };
+}
+
+const ConnectedPage = ({menuOpen}) => {
   return (
     <div className={menuOpen ? "page open" : "page"}>
       <Switch>
@@ -15,5 +20,7 @@ const Page = ({menuOpen}) => {
     </div>
   );
 };
+
+const Page = connect(mapStateToProps)(ConnectedPage);
 
 export default Page;

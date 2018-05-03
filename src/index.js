@@ -1,14 +1,12 @@
 import React from 'react';
 import ReactDOM, { render } from 'react-dom';
 import {BrowserRouter} from 'react-router-dom';
+import Root from './Root/Root';
 import index from './js/index';
 import styles from './styles/main.scss';
 import 'normalize.css';
-import App from './components/App/App';
 
 render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>, 
+  <Root />, 
   document.getElementById('root')
 );
