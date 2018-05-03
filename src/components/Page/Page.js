@@ -1,12 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import WhatsHotPage from '../pages/WhatsHotPage/WhatsHotPage';
 import BeerPage from '../pages/BeerPage/BeerPage';
 import MeatPage from '../pages/MeatPage/MeatPage';
 
 const mapStateToProps = state => {
-  return { menuOpen: state.menuOpen };
+  return {menuOpen: state.menuOpen};
 }
 
 const ConnectedPage = ({menuOpen}) => {
@@ -21,6 +21,6 @@ const ConnectedPage = ({menuOpen}) => {
   );
 };
 
-const Page = connect(mapStateToProps)(ConnectedPage);
+const Page = withRouter(connect(mapStateToProps)(ConnectedPage));
 
 export default Page;
