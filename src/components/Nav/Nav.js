@@ -55,9 +55,9 @@ class ConnectedNav extends Component {
     return (
       <nav className={this.navClass()}>
         <h1 className="title nav-item">Grill Master <MenuButton handleClick={this.handleClick} /></h1>
-        <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot" handleClick={this.handleClick}/>
-        <NavItem link="/beer" icon={<IoBeer />} linkText="Beer" handleClick={this.handleClick}/>
-        <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat" handleClick={this.handleClick}/>
+        <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot"/>
+        <NavItem link="/beer" icon={<IoBeer />} linkText="Beer"/>
+        <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat"/>
         <form className="nav-item search-item">
           <input type="search" placeholder="search"/>
           <button type="submit"><IoIosSearchStrong /></button>
