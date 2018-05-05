@@ -47,7 +47,7 @@
   }
 
   .nav-item a:hover {
-    color: 	$primary;
+    color: $lemon;
   }
 
   > * {
@@ -102,6 +102,12 @@
     > * {
       order: 4;
     }
+  }
+
+  .link-active {
+    padding-bottom: 4px;
+    border-bottom: 3px solid $watermelon;
+    border-radius: 3px;
   }
 
 }

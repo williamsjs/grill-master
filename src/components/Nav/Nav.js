@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { toggleMenu } from '../../js/actions/index';
+import { withRouter } from 'react-router-dom';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
 import IoBeer from 'react-icons/lib/io/beer';
@@ -9,7 +9,6 @@ import IoIosContact from 'react-icons/lib/io/ios-contact';
 import IoFireball from 'react-icons/lib/io/fireball';
 import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
 import MdRestaurant from 'react-icons/lib/md/restaurant';
-import './Nav.scss';
 
 const mapDispatchToProps = dispatch => ({
     toggleMenu: () => dispatch(toggleMenu())
@@ -73,6 +72,6 @@ class ConnectedNav extends Component {
   }
 }
 
-const Nav = connect(mapStateToProps, mapDispatchToProps)(ConnectedNav);
+const Nav = withRouter(connect(mapStateToProps, mapDispatchToProps)(ConnectedNav));
 
 export default Nav;
