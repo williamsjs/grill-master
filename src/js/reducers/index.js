@@ -1,9 +1,6 @@
 import { combineReducers } from 'redux';
 import { TOGGLE_MENU } from '../constants/action-types';
-
-const menuOpen = (state = false, action) => {
-  return !state;
-}
+import { menuOpen } from './menuOpen';
 
 const rootReducer = combineReducers({menuOpen});
 
