@@ -36,6 +36,7 @@
     "normalize.css": "^8.0.0",
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2"
+    "react-router-dom": "^4.2.2",
+    "redux-thunk": "^2.2.0"
   }
 }
