@@ -1,3 +1,5 @@
-export const menuOpen = (state = false, action) => {
+const menuOpen = (state = false, action) => {
   return !state;
 }
+
+export default menuOpen;
