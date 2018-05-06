@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { fetchRecipes } from '../../../js/actions/index';
 
-const MeatPage = () => {
-  return (
-    <h1>Meat Placeholder</h1>
-  );
-};
+class ConnectedMeatPage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.dispatch(fetchRecipes());
+  }
+
+  render() {
+    return (
+      <h1>LOL</h1>
+    );
+  }
+}
+
+const MeatPage = connect()(ConnectedMeatPage);
 
 export default MeatPage;
