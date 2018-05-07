@@ -6,7 +6,7 @@ import BeerPage from '../pages/BeerPage/BeerPage';
 import MeatPage from '../pages/MeatPage/MeatPage';
 
 const mapStateToProps = state => {
-  return {menuOpen: state.menuOpen};
+  return { menuOpen: state.menuOpen };
 }
 
 const ConnectedPage = ({menuOpen}) => {

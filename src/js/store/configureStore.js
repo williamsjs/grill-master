@@ -5,12 +5,13 @@ import rootReducer from '../reducers/index';
 
 const loggerMiddleware = createLogger();
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(
-    thunkMiddleware,
-    loggerMiddleware
+export default function configureStore(preloadedState) {
+  return createStore(
+    rootReducer,
+    preloadedState,
+    applyMiddleware(
+      thunkMiddleware,
+      loggerMiddleware
+    )
   )
-);
-
-export default store;
+};
