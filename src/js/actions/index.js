@@ -17,7 +17,7 @@ export function fetchRecipes() {
   return function(dispatch) {
     dispatch(requestAllRecipes());
 
-    return fetch(`http://localhost:3000/recipes`)
+    return fetch(`https://grillmaster.herokuapp.com/recipes`)
       .then(response => response.json())
       .then(json => dispatch(receiveAllRecipes(json)));
   };
