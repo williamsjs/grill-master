@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from '../Card/Card';
+import './CardList.scss';
 
 const CardList = ({items}) => (
   <div className="card-list">
