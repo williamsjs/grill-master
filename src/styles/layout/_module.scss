@@ -125,6 +125,7 @@
 
 .page {
   margin-top: 50px;
+  margin-left: 100px;
   @include medium() {
     margin-left: 0;
     transition: all 1s;
@@ -134,7 +135,7 @@
 .page.open {
   @include medium() {
     transition: all 1s;
-    margin-left: 270px;
+    margin-left: 370px;
     margin-top: 0;
   }
 }

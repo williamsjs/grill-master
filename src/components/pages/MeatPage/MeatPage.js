@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchRecipes } from '../../../js/actions/index';
-import Card from '../../shared/Card/Card';
+import CardList from '../../shared/CardList/CardList';
 
 const mapStateToProps = state => {
   return { recipes: state.recipes };
@@ -18,12 +18,12 @@ class ConnectedMeatPage extends Component {
 
   render() {
     const {isFetching, items} = this.props.recipes;
-    
+
     if (isFetching) {
       return <h1>loading</h1>;
     }
-
-    return items.map(item => <Card key={item.id} name={item.name} />);
+  
+    return <CardList items={items} />
   }
 };
 
