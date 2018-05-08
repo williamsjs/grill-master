@@ -9,9 +9,16 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ConnectNavItem = ({link, linkText, icon, handleClick}) => {
+
+  const checkWindowWidth = () => {
+    if (window.innerWidth < 767) {
+      handleClick();
+    }
+  }
+
   return (
     <li className="nav-item">
-      <NavLink to={link} activeClassName="link-active" onClick={handleClick}>{icon} &nbsp;{linkText}</NavLink>
+      <NavLink to={link} activeClassName="link-active" onClick={checkWindowWidth}>{icon} &nbsp;{linkText}</NavLink>
     </li>
   );
 };
