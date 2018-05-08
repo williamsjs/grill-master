@@ -1,5 +1,11 @@
+@import '../../../styles/partials/mixins';
+
 .card-list {
   display: flex;
   flex-flow: row wrap;
+
+  @include small() {
+    justify-content: center;
+  }
 }
 

@@ -1,0 +1,22 @@
+@import '../../styles/partials/mixins';
+
+.page {
+    margin-top: 80px;
+    margin-left: 100px;
+    @include medium() {
+      margin-left: 0;
+      transition: all 1s;
+    }
+  
+    @include small() {
+      margin-left: 0;
+    }
+  }
+  
+  .page.open {
+    @include medium() {
+      transition: all 1s;
+      margin-left: 340px;
+      margin-top: 0;
+    }
+  }

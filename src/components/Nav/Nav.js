@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleMenu } from '../../js/actions/index';
 import { withRouter } from 'react-router-dom';
+import './Nav.scss';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
 import IoBeer from 'react-icons/lib/io/beer';
@@ -25,6 +26,12 @@ class ConnectedNav extends Component {
     this.onscroll = this.onscroll.bind(this);
     this.navClass = this.navClass.bind(this);
     this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentWillMount() {
+    if (window.innerWidth > 767) {
+      this.props.toggleMenu();
+    }
   }
 
   componentDidMount() {

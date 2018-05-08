@@ -5,137 +5,26 @@
   margin: auto;
 }
 
-.main-nav {
-  width: 100%;
-  position: fixed;
-  padding-top: 15px;
-  padding-bottom: 20px;
-  display: flex;
-  justify-content: flex-end;
-  font-family: $primary-font;
-  transition: background-color .2s ease-in;
-  transition: margin-left 1s;
-
-  .title {
-    color: $primary;
-    font-family: $secondary-font;
-    margin-right: auto;
-    font-size: 1.6rem;
-    letter-spacing: .05rem;
-    color: $lemon;
-    text-shadow: 1px 1px 1px #000;
-  }
-
-  input[type="search"] {
-    border-radius: 3px;
-    padding-left: 10px;
-  }
-
-  button[type="submit"] {
-    margin-left: -32px;
-    border-radius: 0 3px 3px 0;
-    height: 22px;
-    @include remove-props(border-right, border-top, border-bottom);
-    background: $watermelon;
-    color: $primary;
-
-    &:hover {
-      background: $primary;
-      cursor: pointer;
-      color: $watermelon;
-    }
-  }
-
-  .nav-item a:hover {
-    color: $lemon;
-  }
-
-  > * {
-    margin: auto 20px;
-    font-size: 1.1rem;
-  }
-
-  .profile {
-    font-size: 1.5rem;
-    margin-left: 0;
-  }
-
-  .profile-text {
-    display: none;
-  }
-
-  @include medium-to-small() {
-    flex-flow: column;
-    justify-content: flex-start;
-    width: 250px;
-    height: 100%;
-    background: $ocean;
-
-    .profile-text {
-      display: inline-block;
-    }
-
-    .nav-item {
-      margin: 30px 20px;
-    }
-
-    input[type="search"] {
-      width: 200px;
-    }
-
-    .search-item {
-      order: 2;
-    }
-
-    .nav-item.profile {
-      margin-left: 20px;
-      order: 3;
-      font-size: 1.1rem;
-    }
-
-    .title {
-      margin-top: 0;
-      margin-bottom: 15px;
-      order: 1;
-    }
-
-    > * {
-      order: 4;
-    }
-  }
-
-  .link-active {
-    padding-bottom: 4px;
-    border-bottom: 3px solid $lemon;
-    border-radius: 3px;
-  }
-
+.btn {
+  color: $primary;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.closed {
-  @include medium-to-small() {
-    margin-left: -250px;
-    transition: margin-left 1s;
-  }
+.watermelon {
+  background: $watermelon;
 }
 
-.scrolled {
-  background-color: $ocean;
-}
-
-.page {
-  margin-top: 50px;
-  margin-left: 100px;
-  @include medium() {
-    margin-left: 0;
-    transition: all 1s;
-  }
-}
-
-.page.open {
-  @include medium() {
-    transition: all 1s;
-    margin-left: 370px;
-    margin-top: 0;
-  }
+.display-none {
+  display: none;
 }

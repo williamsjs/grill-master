@@ -1,8 +1,29 @@
-import { REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES } from '../constants/action-types';
+import { REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
+         UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, EDITING_RECIPE
+        } from '../constants/action-types';
 
 const initialState = {
   isFetching: false, 
   items: []
+};
+
+const updatedRecipe = (state, action) => {
+  switch (action.type) {
+    case UPDATE_RECIPE_REQ:
+      return state.map(item => {
+        return action.id === item.id ? {...item, isUpdating: true} : item
+      });
+    case UPDATE_RECIPE_RES:
+      return state.map(item => {
+        return action.id === item.id ? {...item, isUpdating: false, name: action.name} : item
+      });
+    case EDITING_RECIPE:
+      return state.map(item => {
+        return action.id === item.id ? {...item, edited: action.editing} : item
+      });
+    default:
+      return state;
+  };
 };
 
 const recipes = (state = initialState, action) => {
@@ -11,6 +32,10 @@ const recipes = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case RECEIVE_ALL_RECIPES:
       return { ...state, isFetching: false, items: action.recipes };
+    case UPDATE_RECIPE_REQ:
+    case UPDATE_RECIPE_RES:
+    case EDITING_RECIPE:
+      return { ...state, items: updatedRecipe(state.items, action)};
     default:
       return state;
   }
