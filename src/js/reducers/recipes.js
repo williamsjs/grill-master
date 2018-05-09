@@ -1,5 +1,6 @@
 import { REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
-         UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, EDITING_RECIPE
+         UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, EDITING_RECIPE,
+         UPDATE_RECIPE
         } from '../constants/action-types';
 
 const initialState = {
@@ -21,6 +22,10 @@ const updatedRecipe = (state, action) => {
       return state.map(item => {
         return action.id === item.id ? {...item, edited: action.editing} : item
       });
+    case UPDATE_RECIPE:
+      return state.map(item => {
+        return action.id === item.id ? {...item, name: action.newVal} : item
+      });
     default:
       return state;
   };
@@ -35,6 +40,7 @@ const recipes = (state = initialState, action) => {
     case UPDATE_RECIPE_REQ:
     case UPDATE_RECIPE_RES:
     case EDITING_RECIPE:
+    case UPDATE_RECIPE:
       return { ...state, items: updatedRecipe(state.items, action)};
     default:
       return state;

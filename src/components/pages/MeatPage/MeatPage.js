@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecipes, saveRecipe, editingRecipe } from '../../../js/actions/index';
+import { fetchRecipes, saveRecipe, editingRecipe, updateRecipe } from '../../../js/actions/index';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
 
@@ -9,7 +9,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateRecipe: recipe => dispatch(updateRecipe(recipe)),
+  updateRecipe: (recipe, newVal) => dispatch(updateRecipe(recipe, newVal)),
   saveRecipe: recipe => dispatch(saveRecipe(recipe)),
   editingRecipe: (recipe, editing) => dispatch(editingRecipe(recipe, editing)),
   fetchRecipes: () => dispatch(fetchRecipes())

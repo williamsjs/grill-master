@@ -10,7 +10,7 @@ export const requestAllRecipes = () => ({type: REQUEST_ALL_RECIPES});
 
 export const saveRecipeRequest = (id) => ({type: UPDATE_RECIPE_REQ, id: id});
 
-export const updateRecipe = (item) => ({type: UPDATE_RECIPE,  id: item.id});
+export const updateRecipe = (id, newVal) => ({type: UPDATE_RECIPE,  id: id, newVal: newVal});
 
 export const editingRecipe = (item, editing) => ({type: EDITING_RECIPE, id: item.id, editing: editing})
 

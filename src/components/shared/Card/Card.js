@@ -2,15 +2,22 @@ import React, { Component } from 'react';
 import './Card.scss';
 
 const Card = ({isEditing, item, onBlur, onChange}) => {
-  const editing = (edit) => {
+
+  const editing = (editMode) => {
     return e => {
       e.stopPropagation();
-      isEditing(item, edit);
+      isEditing(item, editMode);
     };
   }
 
+  const update = () => {
+    return e => {
+      onChange(item.id, e.target.value);
+    }
+  }
+
   return (
-    <div className="card" onClick={editing(false)} >
+    <div className="card">
       <img className="card-image" src="https://picsum.photos/200/200" alt="no image display" />
       <div className="card-body">
         {!item.edited ? (
@@ -19,7 +26,7 @@ const Card = ({isEditing, item, onBlur, onChange}) => {
           </h3>
         ) : (
           <div>
-            <input type="text" onClick={e => e.stopPropagation()} value={name} onChange={onChange} />
+            <input type="text" onClick={e => e.stopPropagation()} value={item.name} onBlur={editing(false)} onChange={update()} />
           </div>
         )}
       </div>

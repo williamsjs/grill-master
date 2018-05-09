@@ -46,7 +46,8 @@ module.exports = {
     ]
   },
   devServer: {
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -56,6 +57,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: "[name].css",
       chunkFilename: "[id].css"
-    })
+    }),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ]
 }
