@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
+import Dropzone from 'react-dropzone'
 import './Card.scss';
 
-const Card = ({isEditing, item, onBlur, onChange}) => {
+class Card extends Component {
+  constructor(props) {
+    super(props)
 
-  const editing = (editMode) => {
+    this.state = { editMode: false };
+
+    this.update = this.update.bind(this);
+    this.editing = this.editing.bind(this);
+  }
+
+  editing(editMode) {
     return e => {
-      e.stopPropagation();
-      isEditing(item, editMode);
+      this.setState({editMode: editMode});
+      this.props.onBlur(this.props.item);
     };
   }
 
-  const update = () => {
+  update() {
     return e => {
-      onChange(item.id, e.target.value);
+      this.props.onChange(this.props.item.id, e.target.value);
     }
   }
 
-  return (
-    <div className="card">
-      <img className="card-image" src="https://picsum.photos/200/200" alt="no image display" />
-      <div className="card-body">
-        {!item.edited ? (
-          <h3 className="card-title" onClick={editing(true)} >
-            {item.name}
-          </h3>
-        ) : (
-          <div>
-            <input type="text" onClick={e => e.stopPropagation()} value={item.name} onBlur={editing(false)} onChange={update()} />
-          </div>
-        )}
+  render() {
+    return (
+      <div className="card">
+        <Dropzone style={{}}>
+          <img className="card-image" src="https://picsum.photos/200/200" alt="no image display" />
+        </Dropzone>
+        <div className="card-body">
+        <div className="card-title">
+          <input type="text" onClick={this.editing(true)} value={this.props.item.name} onBlur={this.editing(false)} onChange={this.update()} />
+        </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default Card;

@@ -1,0 +1,38 @@
+@import '../../../../styles/partials/variables';
+
+.form-group {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.add-recipe-form {
+  background: $primary;
+}
+
+.form-column {
+  width: 400px;
+}
+
+.col-header {
+  color: #000;
+  margin-bottom: 5px;
+}
+
+#recipe-name {
+  background: lightgrey;
+  margin: 13px auto;
+  border-radius: 3px;
+}
+
+.drop-zone {
+  width: 200px; 
+  height: 200px; 
+  border-width: 2px; 
+  border-color: rgb(102, 102, 102); 
+  border-style: dashed; 
+  border-radius: 5px;
+  margin: auto;
+}

@@ -2,7 +2,6 @@
 
 .page {
     margin-top: 80px;
-    margin-left: 100px;
     @include medium() {
       margin-left: 0;
       transition: all 1s;
@@ -16,7 +15,7 @@
   .page.open {
     @include medium() {
       transition: all 1s;
-      margin-left: 340px;
+      padding-left: 250px;
       margin-top: 0;
     }
   }
