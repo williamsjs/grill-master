@@ -1,12 +1,12 @@
 import React from 'react';
 import Dropzone from 'react-dropzone'
-import './AddRecipeForm.scss';
+import './RecipeForm.scss';
 import SaveCancelBtn from '../../../shared/SaveCancelBtn/SaveCancelBtn';
 
-const AddRecipeForm = ({onClick}) => {
+const RecipeForm = ({onClick}) => {
   return (
-    <div className="add-recipe-form">
-      <SaveCancelBtn onClick={() => {'cool'}} />
+    <div className="recipe-form">
+      <SaveCancelBtn onClick={onClick} />
       <div className="form-group">
         <div className="form-column title-col">
           <h1 className="col-header">Recipe Name</h1>
@@ -26,4 +26,4 @@ const AddRecipeForm = ({onClick}) => {
   );
 };
 
-export default AddRecipeForm;
+export default RecipeForm;

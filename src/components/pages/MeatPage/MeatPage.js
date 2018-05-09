@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchRecipes, saveRecipe, updateRecipe } from '../../../js/actions/index';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
-import AddRecipeForm from './AddRecipeForm/AddRecipeForm';
+import RecipeForm from './RecipeForm/RecipeForm';
 
 const mapStateToProps = state => {
   return { recipes: state.recipes };
@@ -45,7 +45,7 @@ class ConnectedMeatPage extends Component {
     return (
       <div className="meat-page">
         {this.state.addRecipe ? (
-          <AddRecipeForm onClick={this.onClick} />
+          <RecipeForm onClick={this.onClick} />
         ) : (
           <button className="btn watermelon" onClick={this.onClick(true)} >Add Recipe</button>
         )}
