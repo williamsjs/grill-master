@@ -26,15 +26,18 @@ class Card extends Component {
   }
 
   render() {
+    const {item, editItem} = this.props;
+
     return (
       <div className="card">
         <Dropzone style={{}}>
           <img className="card-image" src="https://picsum.photos/200/200" alt="no image display" />
         </Dropzone>
         <div className="card-body">
-        <div className="card-title">
-          <input type="text" onClick={this.editing(true)} value={this.props.item.name} onBlur={this.editing(false)} onChange={this.update()} />
-        </div>
+          <div className="card-title">
+            <input type="text" className="inline-edit" onClick={this.editing(true)} value={item.name} onBlur={this.editing(false)} onChange={this.update()} />
+          </div>
+          <button className="btn details-btn" onClick={editItem(item.id)} >Edit Details</button>
         </div>
       </div>
     );

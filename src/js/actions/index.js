@@ -1,6 +1,7 @@
 import {
    TOGGLE_MENU, REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
-   UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES
+   UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
+   RECEIVE_RECIPE, REQUEST_RECIPE
   } from '../constants/action-types';
 import fetch from 'cross-fetch';
 
@@ -50,4 +51,18 @@ export function saveRecipe(recipe) {
     .catch(e => console.log(e));
   }
 }
+
+const requestRecipe = () => ({type: REQUEST_RECIPE});
+const receiveRecipe = recipe => ({type: RECEIVE_RECIPE, recipe: recipe});
+
+export function getRecipe(id) {
+  return function(dispatch) {
+    dispatch(requestRecipe());
+
+    return fetch(`https://grillmaster.herokuapp.com/recipes/${id}`)
+      .then(res => res.json())
+      .then(json => dispatch(receiveRecipe(json)));
+  }
+}
+
 

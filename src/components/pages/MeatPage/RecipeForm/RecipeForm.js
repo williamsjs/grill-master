@@ -3,14 +3,13 @@ import Dropzone from 'react-dropzone'
 import './RecipeForm.scss';
 import SaveCancelBtn from '../../../shared/SaveCancelBtn/SaveCancelBtn';
 
-const RecipeForm = ({onClick}) => {
+const RecipeForm = ({onClick, currentRecipe}) => {
   return (
     <div className="recipe-form">
       <SaveCancelBtn onClick={onClick} />
       <div className="form-group">
         <div className="form-column title-col">
-          <h1 className="col-header">Recipe Name</h1>
-          <input type="text" id="recipe-name" />
+          <input type="text" className="col-header inline-edit" value={currentRecipe.recipe ? currentRecipe.recipe.name : 'Enter Recipe Name'} />
           <Dropzone className="drop-zone">
             <p>Image goes here :)</p>
           </Dropzone>
