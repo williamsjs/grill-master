@@ -11,12 +11,13 @@
     font-family: $primary-font;
     transition: background-color .2s ease-in;
     transition: margin-left 1s;
+    z-index: 1;
   
     .title {
       color: $primary;
       font-family: $primary-font;
       margin-right: auto;
-      font-size: 1.6rem;
+      font-size: 26px;
       letter-spacing: .05rem;
       color: $lemon;
       text-shadow: 1px 1px 1px #000;
@@ -48,11 +49,11 @@
   
     > * {
       margin: auto 20px;
-      font-size: 1.1rem;
+      font-size: 18px;
     }
   
     .profile {
-      font-size: 1.5rem;
+      font-size: 24px;
       margin-left: 0;
     }
   
@@ -86,7 +87,7 @@
       .nav-item.profile {
         margin-left: 20px;
         order: 3;
-        font-size: 1.1rem;
+        font-size: 18px;
       }
   
       .title {

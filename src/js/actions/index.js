@@ -1,7 +1,7 @@
 import {
    TOGGLE_MENU, REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
    UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
-   RECEIVE_RECIPE, REQUEST_RECIPE
+   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE
   } from '../constants/action-types';
 import fetch from 'cross-fetch';
 
@@ -65,4 +65,6 @@ export function getRecipe(id) {
   }
 }
 
-
+export const updateCurrentRecipe = (id, name) => {
+  return {type: UPDATE_CURRENT_RECIPE, id: id, name: name}
+}

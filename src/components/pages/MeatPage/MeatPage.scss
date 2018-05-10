@@ -1,0 +1,7 @@
+@import '../../../styles/partials/mixins';
+
+.meat-page {
+  @include small() {
+    text-align: center;
+  }
+}

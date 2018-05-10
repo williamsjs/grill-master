@@ -1,0 +1,17 @@
+@import '../../../styles/partials/variables';
+
+
+.btn-group .btn {
+    margin: 5px;
+}
+
+.btn-group .btn.cancel {
+    background: transparent;
+    color: $watermelon;
+    font-size: 2rem;
+    margin-top: 0;
+}
+
+.btn.save {
+    background: $plum;
+}

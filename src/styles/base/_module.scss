@@ -1,10 +1,19 @@
 @import '../partials/variables';
+@import '../partials/mixins';
 
 html {
   box-sizing: border-box;
   font-size: 16px;
   font-family: $primary-font;
   background: radial-gradient(#444, #000);
+
+  @include medium() {
+    font-size: 14px;
+  }
+  
+  @include small() {
+    font-size: 12px;
+  }
 }
 
 html, body {
@@ -31,4 +40,8 @@ li {
 
 input[type="text"], input[type="search"], input[type="password"] {
   border: none;
+}
+
+input[type="text"]:focus {
+  outline: none;
 }

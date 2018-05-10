@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchRecipes, saveRecipe, updateRecipe, getRecipe } from '../../../js/actions/index';
+import IoPlusCircled from 'react-icons/lib/io/plus-circled';
+import { fetchRecipes, saveRecipe, updateRecipe, getRecipe, updateCurrentRecipe } from '../../../js/actions/index';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
 import RecipeForm from './RecipeForm/RecipeForm';
+import './MeatPage.scss';
 
 const mapStateToProps = state => {
   return { recipes: state.recipes, currentRecipe: state.currentRecipe };
@@ -13,7 +15,8 @@ const mapDispatchToProps = dispatch => ({
   updateRecipe: (recipe, newVal) => dispatch(updateRecipe(recipe, newVal)),
   saveRecipe: recipe => dispatch(saveRecipe(recipe)),
   fetchRecipes: () => dispatch(fetchRecipes()),
-  getRecipe: id => dispatch(getRecipe(id))
+  getRecipe: id => dispatch(getRecipe(id)),
+  updateCurrentRecipe: (id, name) => dispatch(updateCurrentRecipe(id, name))
 });
 
 class ConnectedMeatPage extends Component {
@@ -32,6 +35,7 @@ class ConnectedMeatPage extends Component {
 
   onClick(show) {
     return e => {
+      this.props.updateCurrentRecipe(null, null);
       this.setState({showRecipeForm: show})
     }
   }
@@ -45,7 +49,7 @@ class ConnectedMeatPage extends Component {
 
   render() {
     const {isFetching, items} = this.props.recipes;
-    const {updateRecipe, saveRecipe, currentRecipe} = this.props;
+    const {updateRecipe, saveRecipe, currentRecipe, updateCurrentRecipe} = this.props;
 
     if (isFetching) {
       return <h1>loading</h1>;
@@ -54,9 +58,9 @@ class ConnectedMeatPage extends Component {
     return (
       <div className="meat-page">
         {this.state.showRecipeForm ? (
-          <RecipeForm onClick={this.onClick} currentRecipe={currentRecipe} />
+          <RecipeForm onClick={this.onClick} currentRecipe={currentRecipe} updateCurrentRecipe={updateCurrentRecipe} />
         ) : (
-          <button className="btn watermelon" onClick={this.onClick(true)} >Add Recipe</button>
+          <button className="btn watermelon" onClick={this.onClick(true)} ><IoPlusCircled /> Recipe</button>
         )}
 
         <CardList>

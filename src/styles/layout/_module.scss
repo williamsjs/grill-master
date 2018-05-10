@@ -2,12 +2,18 @@
 @import '../partials/mixins';
 
 .container {
-  margin: auto;
+  margin: auto 20px;
+
+  @include medium-to-small() {
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .btn {
-  color: #000;
+  color: $primary;
   background: $watermelon;
+  font-family: $third-font;
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -22,17 +28,8 @@
   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.btn-group .btn {
-  margin: 5px;
-}
-
 .ocean {
   background: $ocean;
-}
-
-.details-btn {
-  background: $plum;
-  color: $primary;
 }
 
 .watermelon {

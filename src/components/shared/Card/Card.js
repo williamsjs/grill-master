@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Dropzone from 'react-dropzone'
+import IoEdit from 'react-icons/lib/io/edit';
 import './Card.scss';
-
+import ImgUploader from '../ImgUploader/ImgUploader';
+import InputEdit from '../InputEdit/InputEdit';
 class Card extends Component {
   constructor(props) {
     super(props)
@@ -30,14 +31,10 @@ class Card extends Component {
 
     return (
       <div className="card">
-        <Dropzone style={{}}>
-          <img className="card-image" src="https://picsum.photos/200/200" alt="no image display" />
-        </Dropzone>
+        <ImgUploader item={item} />
         <div className="card-body">
-          <div className="card-title">
-            <input type="text" className="inline-edit" onClick={this.editing(true)} value={item.name} onBlur={this.editing(false)} onChange={this.update()} />
-          </div>
-          <button className="btn details-btn" onClick={editItem(item.id)} >Edit Details</button>
+          <InputEdit onClick={this.editing} name={item.name}  onBlur={this.editing}  onChange={this.update}  />
+          <button className="btn details-btn" onClick={editItem(item.id)} ><IoEdit /> Details</button>
         </div>
       </div>
     );
