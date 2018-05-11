@@ -9,15 +9,12 @@ class Card extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { editMode: false };
-
     this.update = this.update.bind(this);
     this.editing = this.editing.bind(this);
   }
 
-  editing(editMode) {
+  editing() {
     return e => {
-      this.setState({editMode: editMode});
       this.props.onBlur(this.props.item);
     };
   }
@@ -35,7 +32,7 @@ class Card extends Component {
       <div className="card">
         <ImgUploader item={item} />
         <div className="card-body">
-          <InputEdit onClick={this.editing} name={item.name} onBlur={this.editing} onChange={this.update} />
+          <InputEdit text={item.name} onChange={this.update} onBlur={this.editing} />
           <Link to={linkToUrl}>  
             <button className="btn details-btn"><IoEdit /> Details</button>
           </Link>

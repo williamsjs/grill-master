@@ -5,7 +5,6 @@ import { fetchRecipes, saveRecipe, updateRecipe } from '../../../js/actions/inde
 import { Link } from 'react-router-dom';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
-import RecipeForm from './RecipeForm/RecipeForm';
 import './MeatPage.scss';
 
 const mapStateToProps = state => {

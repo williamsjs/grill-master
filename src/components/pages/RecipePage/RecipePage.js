@@ -21,7 +21,7 @@ class ConnectedRecipePage extends Component {
   }
 
   componentWillMount() {
-    this.props.updateCurrentRecipe(null, null);
+    this.props.updateCurrentRecipe('');
   }
 
   componentDidMount() {
@@ -39,9 +39,10 @@ class ConnectedRecipePage extends Component {
     return (
       <div className="recipe-page">
         <BackButton goBack={history.goBack} />
+
         {recipe.fetching ?  
                 <LoadingOverlay /> 
-                : <RecipeForm recipe={recipe} updateCurrentRecipe={updateCurrentRecipe} />
+                : <RecipeForm recipe={recipe} onChange={updateCurrentRecipe} />
         }
       </div>
     ); 

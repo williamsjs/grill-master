@@ -1,22 +1,14 @@
 import React from 'react';
 import Dropzone from 'react-dropzone'
+import MainInput from '../../../Shared/MainInput/MainInput';
 import './RecipeForm.scss';
 
-const RecipeForm = ({onClick, recipe, updateCurrentRecipe}) => {
-
-  const updateRecipe = e => {
-    updateCurrentRecipe(e.target.value);
-  };
-
+const RecipeForm = ({onClick, recipe, onChange}) => {
   return (
     <div className="recipe-form">
       <div className="form-group">
         <div className="form-column title-col">
-          <input type="text" 
-                 className="col-header inline-edit" 
-                 onChange={updateRecipe} 
-                 value={recipe.name}
-                 placeholder={recipe.name ? recipe.name : 'Enter Recipe Name'} />
+          <MainInput onChange={onChange} value={recipe.name} placeholder={'Enter Recipe Name'} />
           <Dropzone className="drop-zone">
             <p>Image goes here :)</p>
           </Dropzone>
@@ -28,8 +20,8 @@ const RecipeForm = ({onClick, recipe, updateCurrentRecipe}) => {
           <h1 className="col-header">Instructions</h1>
         </div>
       </div>
-      <div class="center">
-        <button class="btn">Save</button>
+      <div className="center">
+        <button className="btn">Save</button>
       </div>
     </div>
   );
