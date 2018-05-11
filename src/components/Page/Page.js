@@ -5,6 +5,7 @@ import './Page.scss';
 import WhatsHotPage from '../pages/WhatsHotPage/WhatsHotPage';
 import BeerPage from '../pages/BeerPage/BeerPage';
 import MeatPage from '../pages/MeatPage/MeatPage';
+import RecipePage from '../pages/RecipePage/RecipePage';
 
 const mapStateToProps = state => {
   return { menuOpen: state.menuOpen };
@@ -17,6 +18,7 @@ const ConnectedPage = ({menuOpen}) => {
         <Route exact path="/whats-hot" component={WhatsHotPage} />
         <Route exact path="/beer" component={BeerPage} />
         <Route exact path="/meat" component={MeatPage} />
+        <Route path="/meat/:id" component={RecipePage} />
       </Switch>
     </div>
   );

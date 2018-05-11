@@ -7,7 +7,7 @@ const currentRecipe = (state = {}, action) => {
     case RECEIVE_RECIPE:
       return {...state, fetching: false, name: action.recipe.name, id: action.recipe.id};
     case UPDATE_CURRENT_RECIPE:
-      return {...state, name: action.name, id: action.id};
+      return {...state, name: action.name};
     default:
       return state;
   }

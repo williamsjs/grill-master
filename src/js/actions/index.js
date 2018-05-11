@@ -65,6 +65,6 @@ export function getRecipe(id) {
   }
 }
 
-export const updateCurrentRecipe = (id, name) => {
-  return {type: UPDATE_CURRENT_RECIPE, id: id, name: name}
+export const updateCurrentRecipe = (name) => {
+  return {type: UPDATE_CURRENT_RECIPE, name: name}
 }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IoPlusCircled from 'react-icons/lib/io/plus-circled';
-import { fetchRecipes, saveRecipe, updateRecipe, getRecipe, updateCurrentRecipe } from '../../../js/actions/index';
+import { fetchRecipes, saveRecipe, updateRecipe } from '../../../js/actions/index';
+import { Link } from 'react-router-dom';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
 import RecipeForm from './RecipeForm/RecipeForm';
@@ -14,42 +15,20 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateRecipe: (recipe, newVal) => dispatch(updateRecipe(recipe, newVal)),
   saveRecipe: recipe => dispatch(saveRecipe(recipe)),
-  fetchRecipes: () => dispatch(fetchRecipes()),
-  getRecipe: id => dispatch(getRecipe(id)),
-  updateCurrentRecipe: (id, name) => dispatch(updateCurrentRecipe(id, name))
+  fetchRecipes: () => dispatch(fetchRecipes())
 });
 
 class ConnectedMeatPage extends Component {
   constructor(props) {
     super(props);
-
-    this.state = { showRecipeForm: false };
-
-    this.onClick = this.onClick.bind(this);
-    this.editItem = this.editItem.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchRecipes();
   }
 
-  onClick(show) {
-    return e => {
-      this.props.updateCurrentRecipe(null, null);
-      this.setState({showRecipeForm: show})
-    }
-  }
-
-  editItem(id) {
-    return e => {
-      this.props.getRecipe(id);
-      this.setState({showRecipeForm: true})
-    }
-  }
-
   render() {
-    const {isFetching, items} = this.props.recipes;
-    const {updateRecipe, saveRecipe, currentRecipe, updateCurrentRecipe} = this.props;
+    const { recipes: { isFetching, items },  updateRecipe, saveRecipe } = this.props;
 
     if (isFetching) {
       return <h1>loading</h1>;
@@ -57,18 +36,15 @@ class ConnectedMeatPage extends Component {
 
     return (
       <div className="meat-page">
-        {this.state.showRecipeForm ? (
-          <RecipeForm onClick={this.onClick} currentRecipe={currentRecipe} updateCurrentRecipe={updateCurrentRecipe} />
-        ) : (
-          <button className="btn watermelon" onClick={this.onClick(true)} ><IoPlusCircled /> Recipe</button>
-        )}
+        <Link to="/meat/new" >
+          <button className="btn watermelon"><IoPlusCircled /> Recipe</button>
+        </Link>
 
         <CardList>
-          {items.map(item => <Card key={item.id} item={item} onBlur={saveRecipe} onChange={updateRecipe} editItem={this.editItem} />)}
+          {items.map(item => <Card key={item.id} item={item} onBlur={saveRecipe} onChange={updateRecipe} linkToUrl={`/meat/${item.id}`} />)}
         </CardList>
       </div>
-
-    )
+    );
   }
 };
 
