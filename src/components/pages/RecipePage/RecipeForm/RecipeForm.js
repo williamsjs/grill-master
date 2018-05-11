@@ -12,7 +12,11 @@ const RecipeForm = ({onClick, recipe, updateCurrentRecipe}) => {
     <div className="recipe-form">
       <div className="form-group">
         <div className="form-column title-col">
-          <input type="text" className="col-header inline-edit" onChange={updateRecipe} value={recipe.name || 'Enter Recipe Name'} />
+          <input type="text" 
+                 className="col-header inline-edit" 
+                 onChange={updateRecipe} 
+                 value={recipe.name}
+                 placeholder={recipe.name ? recipe.name : 'Enter Recipe Name'} />
           <Dropzone className="drop-zone">
             <p>Image goes here :)</p>
           </Dropzone>
@@ -23,6 +27,9 @@ const RecipeForm = ({onClick, recipe, updateCurrentRecipe}) => {
         <div className="form-column instructions">
           <h1 className="col-header">Instructions</h1>
         </div>
+      </div>
+      <div class="center">
+        <button class="btn">Save</button>
       </div>
     </div>
   );
