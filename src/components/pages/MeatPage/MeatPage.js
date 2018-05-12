@@ -35,7 +35,7 @@ class ConnectedMeatPage extends Component {
 
     return (
       <div className="meat-page">
-        <Link to="/meat/new" >
+        <Link to="/meat/new" style={{marginLeft: '20px'}} >
           <button className="btn watermelon"><IoPlusCircled /> Recipe</button>
         </Link>
 

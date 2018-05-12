@@ -1,7 +1,8 @@
 import {
    TOGGLE_MENU, REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
    UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
-   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE
+   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE,
+   ADD_RECIPE_REQUEST, ADD_RECIPE_RESPONSE
   } from '../constants/action-types';
 import fetch from 'cross-fetch';
 
@@ -9,9 +10,9 @@ export const toggleMenu = () => ({type: TOGGLE_MENU});
 
 export const requestAllRecipes = () => ({type: REQUEST_ALL_RECIPES});
 
-export const saveRecipeRequest = (id) => ({type: UPDATE_RECIPE_REQ, id: id});
+export const saveRecipeRequest = id => ({type: UPDATE_RECIPE_REQ, id: id});
 
-export const saveRecipeResponse = (id) => ({type: UPDATE_RECIPE_RES, id: id});
+export const saveRecipeResponse = id => ({type: UPDATE_RECIPE_RES, id: id});
 
 export const updateRecipe = (id, newVal) => ({type: UPDATE_RECIPE,  id: id, newVal: newVal});
 
@@ -68,3 +69,32 @@ export function getRecipe(id) {
 export const updateCurrentRecipe = (name) => {
   return {type: UPDATE_CURRENT_RECIPE, name: name}
 }
+
+const addRecipeRequest = () => ({type: ADD_RECIPE_REQUEST});
+const addRecipeResponse = id => ({type: ADD_RECIPE_RESPONSE, id: id});
+
+export function addRecipe() {
+  return function(dispatch, getState) {
+    const recipe = getState().currentRecipe
+    const reqType = recipe.id ? 'PUT' : 'POST';
+    const baseUrl = `https://grillmaster.herokuapp.com/recipes/`;
+    const url = recipe.id ? baseUrl + recipe.id : baseUrl;
+
+    dispatch(addRecipeRequest());
+
+    const formData = new FormData();
+    formData.append('name', recipe.name);
+
+    return fetch(
+      url,
+      { 
+        method: reqType,
+        body: formData
+      }
+    )
+    .then(res => res.json())
+    .then(json => console.log(json));
+  }
+}
+
+

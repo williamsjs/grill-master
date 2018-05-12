@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getRecipe, updateCurrentRecipe } from '../../../js/actions/index';
+import { getRecipe, updateCurrentRecipe, addRecipe } from '../../../js/actions/index';
 import RecipeForm from './RecipeForm/RecipeForm';
 import BackButton from '../../shared/BackButton/BackButton';
 import LoadingOverlay from '../../shared/LoadingOverlay/LoadingOverlay';
 
 const mapDispatchToProps = dispatch => ({
   getRecipe: id => dispatch(getRecipe(id)),
-  updateCurrentRecipe: (name) => dispatch(updateCurrentRecipe(name))
+  updateCurrentRecipe: (name) => dispatch(updateCurrentRecipe(name)),
+  saveRecipe: () => dispatch(addRecipe())
 });
 
 const mapStateToProps = state => ({
@@ -18,6 +19,8 @@ const mapStateToProps = state => ({
 class ConnectedRecipePage extends Component {
   constructor(props) {
     super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -34,6 +37,11 @@ class ConnectedRecipePage extends Component {
     window.scrollTo(0, 0);
   }
 
+  onSubmit(e) {
+    e.preventDefault();
+    this.props.saveRecipe();
+  }
+
   render() {
     const { loading, history, recipe, updateCurrentRecipe } = this.props;
     return (
@@ -42,7 +50,7 @@ class ConnectedRecipePage extends Component {
 
         {recipe.fetching ?  
                 <LoadingOverlay /> 
-                : <RecipeForm recipe={recipe} onChange={updateCurrentRecipe} />
+                : <RecipeForm recipe={recipe} onChange={updateCurrentRecipe} onSubmit={this.onSubmit} />
         }
       </div>
     ); 

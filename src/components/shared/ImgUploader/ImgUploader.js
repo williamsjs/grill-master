@@ -1,5 +1,5 @@
 import React from 'react';
-import IoIosCloudUploadOutline from 'react-icons/lib/io/ios-cloud-upload-outline';
+import GoCloudUpload from 'react-icons/lib/go/cloud-upload';
 import Dropzone from 'react-dropzone';
 import './ImgUploader.scss';
 
@@ -8,7 +8,7 @@ const ImgUploader = ({item}) => {
       <Dropzone style={{}}>
         <div className="img-uploader">
           <div className="img-overlay">
-            <div className="upload-icon"><IoIosCloudUploadOutline /></div>
+            <div className="upload-icon"><GoCloudUpload /></div>
           </div>
           <img src="https://picsum.photos/200/200" alt={item.name} />
         </div>
