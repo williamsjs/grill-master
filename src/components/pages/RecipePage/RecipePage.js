@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getRecipe, updateCurrentRecipe, addRecipe } from '../../../js/actions/index';
+import { getRecipe, updateCurrentRecipe, saveCurrentRecipe } from '../../../js/actions/index';
 import RecipeForm from './RecipeForm/RecipeForm';
 import BackButton from '../../shared/BackButton/BackButton';
 import LoadingOverlay from '../../shared/LoadingOverlay/LoadingOverlay';
@@ -9,7 +9,7 @@ import LoadingOverlay from '../../shared/LoadingOverlay/LoadingOverlay';
 const mapDispatchToProps = dispatch => ({
   getRecipe: id => dispatch(getRecipe(id)),
   updateCurrentRecipe: (name) => dispatch(updateCurrentRecipe(name)),
-  saveRecipe: () => dispatch(addRecipe())
+  saveCurrentRecipe: (name, id) => dispatch(saveCurrentRecipe(name, id))
 });
 
 const mapStateToProps = state => ({
@@ -38,8 +38,9 @@ class ConnectedRecipePage extends Component {
   }
 
   onSubmit(e) {
+    const {name, id} = this.props.recipe;
     e.preventDefault();
-    this.props.saveRecipe();
+    this.props.saveCurrentRecipe(name, id);
   }
 
   render() {
