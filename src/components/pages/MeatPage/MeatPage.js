@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IoPlusCircled from 'react-icons/lib/io/plus-circled';
-import { fetchRecipes, saveRecipe, updateRecipe } from '../../../js/actions/index';
+import { fetchRecipes, saveRecipe, updateRecipe, deleteRecipe } from '../../../js/actions/index';
 import { Link } from 'react-router-dom';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => ({
   updateRecipe: (recipe, newVal) => dispatch(updateRecipe(recipe, newVal)),
   saveRecipe: recipe => dispatch(saveRecipe(recipe)),
-  fetchRecipes: () => dispatch(fetchRecipes())
+  fetchRecipes: () => dispatch(fetchRecipes()),
+  deleteRecipe: id => dispatch(deleteRecipe(id))
 });
 
 class ConnectedMeatPage extends Component {
@@ -27,7 +28,7 @@ class ConnectedMeatPage extends Component {
   }
 
   render() {
-    const { recipes: { isFetching, items },  updateRecipe, saveRecipe } = this.props;
+    const { recipes: { isFetching, items },  updateRecipe, saveRecipe, deleteRecipe } = this.props;
 
     if (isFetching) {
       return <h1>loading</h1>;
@@ -40,7 +41,14 @@ class ConnectedMeatPage extends Component {
         </Link>
 
         <CardList>
-          {items.map(item => <Card key={item.id} item={item} onBlur={saveRecipe} onChange={updateRecipe} linkToUrl={`/meat/${item.id}`} />)}
+          {items.map(item => (
+            <Card key={item.id} 
+                  item={item} 
+                  onBlur={saveRecipe} 
+                  onChange={updateRecipe} 
+                  onClick={deleteRecipe}
+                  linkToUrl={`/meat/${item.id}`} />
+          ))}
         </CardList>
       </div>
     );

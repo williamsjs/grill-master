@@ -25,18 +25,20 @@ class Card extends Component {
       this.props.onChange(this.props.item.id, e.target.value);
     }
   }
-  
-  delete(e) {
-    e.stopPropagation();
-    alert(`${this.props.item.id} deleted`);
-  };
+
+  delete(id) {
+    return e => {
+      e.stopPropagation();
+      this.props.onClick(id);
+    }
+  }
 
   render() {
-    const {item, linkToUrl} = this.props;
+    const {item, linkToUrl, onClick} = this.props;
 
     return (
       <div className="card">
-        <ImgUploader item={item} onClick={this.delete} />
+        <ImgUploader item={item} onClick={this.delete(item.id)} />
         <div className="card-body">
           <InputEdit text={item.name} onChange={this.update} onBlur={this.editing} />
           <Link to={linkToUrl}>  

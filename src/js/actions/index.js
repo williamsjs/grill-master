@@ -1,9 +1,11 @@
 import {
    TOGGLE_MENU, REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
    UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
-   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE
+   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE,
+   DELETE_RECIPE_REQ, DELETE_RECIPE_RESP
   } from '../constants/action-types';
 import fetch from 'cross-fetch';
+import appUrl from '../constants/appUrl';
 
 export const toggleMenu = () => ({type: TOGGLE_MENU});
 
@@ -27,7 +29,7 @@ export function fetchRecipes() {
   return function(dispatch) {
     dispatch(requestAllRecipes());
 
-    return fetch(`https://grillmaster.herokuapp.com/recipes`)
+    return fetch(`${appUrl}/recipes`)
       .then(response => response.json())
       .then(json => dispatch(receiveAllRecipes(json)));
   };
@@ -41,7 +43,7 @@ export function saveRecipe(recipe) {
     dispatch(saveRecipeRequest(recipe.id));
 
     return fetch(
-      `https://grillmaster.herokuapp.com/recipes/${recipe.id}`,
+      `${appUrl}/recipes/${recipe.id}`,
       {
         method: 'PUT',
         body: formData
@@ -59,7 +61,7 @@ export function getRecipe(id) {
   return function(dispatch) {
     dispatch(requestRecipe());
 
-    return fetch(`https://grillmaster.herokuapp.com/recipes/${id}`)
+    return fetch(`${appUrl}/recipes/${id}`)
       .then(res => res.json())
       .then(json => dispatch(receiveRecipe(json)));
   }
@@ -72,7 +74,7 @@ export const updateCurrentRecipe = (name) => {
 export function saveCurrentRecipe(name, id) {
   return function(dispatch) {
     const reqType = id ? 'PUT' : 'POST';
-    const baseUrl = `https://grillmaster.herokuapp.com/recipes/`;
+    const baseUrl = `${appUrl}/recipes/`;
     const url = id ? baseUrl + id : baseUrl;
 
     const formData = new FormData();
@@ -87,5 +89,22 @@ export function saveCurrentRecipe(name, id) {
     );
   }
 }
+
+const deleteRecipeRequest = () => ({type: DELETE_RECIPE_REQ});
+const deleteRecipeResponse = (id) => ({type: DELETE_RECIPE_RESP, id: id});
+
+export function deleteRecipe(id) {
+  return function(dispatch) {
+
+    return fetch(
+      `${appUrl}/recipes/${id}`,
+      { 
+        method: 'DELETE'
+      }
+    )
+    .then(resp => dispatch(deleteRecipeResponse(id)));
+  }
+}
+
 
 

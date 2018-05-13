@@ -1,5 +1,6 @@
 import { REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
-         UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, UPDATE_RECIPE
+         UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, UPDATE_RECIPE,
+         DELETE_RECIPE_RESP
         } from '../constants/action-types';
 import updatedRecipe from './updatedRecipe';
 
@@ -14,6 +15,8 @@ const recipes = (state = initialState, action) => {
       return { ...state, isFetching: true };
     case RECEIVE_ALL_RECIPES:
       return { ...state, isFetching: false, items: action.recipes };
+    case DELETE_RECIPE_RESP:
+      return { ...state, items: state.items.filter(item => item.id !== action.id) };
     case UPDATE_RECIPE_REQ:
     case UPDATE_RECIPE_RES:
     case UPDATE_RECIPE:
