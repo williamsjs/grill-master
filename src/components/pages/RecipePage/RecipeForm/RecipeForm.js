@@ -1,11 +1,17 @@
 import React from 'react';
 import Dropzone from 'react-dropzone'
-import MainInput from '../../../Shared/MainInput/MainInput';
+import MainInput from '../../../shared/MainInput/MainInput';
+import DeleteBtn from '../../../shared/DeleteBtn/DeleteBtn';
 import './RecipeForm.scss';
 
 const RecipeForm = ({onClick, recipe, onChange, onSubmit}) => {
   return (
     <form onSubmit={onSubmit} className="recipe-form">
+
+      {recipe.id && 
+        <DeleteBtn onClick={onClick} />
+      }
+      
       <div className="form-group">
         <div className="form-column title-col">
           <MainInput onChange={onChange} value={recipe.name} placeholder={'Enter Recipe Name'} />
@@ -21,7 +27,7 @@ const RecipeForm = ({onClick, recipe, onChange, onSubmit}) => {
         </div>
       </div>
       <div className="center">
-        <button className="btn" type="submit">Save</button>
+        <button className="btn bs-success" type="submit">Save</button>
       </div>
     </form>
   );

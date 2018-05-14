@@ -36,6 +36,10 @@
   background: $watermelon;
 }
 
+.bs-success {
+  background: $bs-success;
+}
+
 .display-none {
   display: none;
 }
@@ -49,4 +53,12 @@
 
 .center {
   text-align: center;
+}
+
+.alert-success {
+  background: $bs-success;
+}
+
+.alert-danger {
+  background: $bs-danger;
 }

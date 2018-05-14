@@ -5,6 +5,7 @@ import { fetchRecipes, saveRecipe, updateRecipe, deleteRecipe } from '../../../j
 import { Link } from 'react-router-dom';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
+import Alert from '../../shared/Alert/Alert';
 import './MeatPage.scss';
 
 const mapStateToProps = state => {
@@ -28,7 +29,7 @@ class ConnectedMeatPage extends Component {
   }
 
   render() {
-    const { recipes: { isFetching, items },  updateRecipe, saveRecipe, deleteRecipe } = this.props;
+    const { recipes: { isFetching, items, deleted },  updateRecipe, saveRecipe, deleteRecipe } = this.props;
 
     if (isFetching) {
       return <h1>loading</h1>;
@@ -36,6 +37,9 @@ class ConnectedMeatPage extends Component {
 
     return (
       <div className="meat-page">
+        <Alert visible={deleted} className={'alert-danger center'} >
+          Recipe Deleted!
+        </Alert>
         <Link to="/meat/new" style={{marginLeft: '20px'}} >
           <button className="btn watermelon"><IoPlusCircled /> Recipe</button>
         </Link>

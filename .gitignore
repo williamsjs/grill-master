@@ -7,3 +7,5 @@ yarn-error.log
 
 .firebaserc
 firebase.json
+
+stats.json

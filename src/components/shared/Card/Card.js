@@ -42,7 +42,7 @@ class Card extends Component {
         <div className="card-body">
           <InputEdit text={item.name} onChange={this.update} onBlur={this.editing} />
           <Link to={linkToUrl}>  
-            <button className="btn details-btn"><IoEdit /> Details</button>
+            <button className="btn bs-success"><IoEdit /> Details</button>
           </Link>
         </div>
       </div>

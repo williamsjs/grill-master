@@ -1,9 +1,11 @@
 import {
    TOGGLE_MENU, REQUEST_ALL_RECIPES, RECEIVE_ALL_RECIPES, 
    UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
-   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE,
-   DELETE_RECIPE_REQ, DELETE_RECIPE_RESP
+   RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE_REQ,
+   UPDATE_CURRENT_RECIPE_RES, UPDATE_CURRENT_RECIPE, DELETE_RECIPE_REQ, 
+   DELETE_RECIPE_RESP, REMOVE_DELETED_ALERT
   } from '../constants/action-types';
+
 import fetch from 'cross-fetch';
 import appUrl from '../constants/appUrl';
 
@@ -17,10 +19,10 @@ export const saveRecipeResponse = id => ({type: UPDATE_RECIPE_RES, id: id});
 
 export const updateRecipe = (id, newVal) => ({type: UPDATE_RECIPE,  id: id, newVal: newVal});
 
-export const receiveAllRecipes = (json) => {
+export const receiveAllRecipes = (recipes) => {
   return {
     type: RECEIVE_ALL_RECIPES,
-    recipes: json,
+    recipes: recipes,
     receiveDate: Date.now()
   };
 };
@@ -67,12 +69,21 @@ export function getRecipe(id) {
   }
 }
 
-export const updateCurrentRecipe = (name) => {
-  return {type: UPDATE_CURRENT_RECIPE, name: name}
+export const updateCurrentRecipe = (name, id) => {
+  return {type: UPDATE_CURRENT_RECIPE, name: name, id: id}
+}
+
+export const updateCurrentRecipeReq = () => {
+  return {type: UPDATE_CURRENT_RECIPE_REQ};
+}
+
+export const updateCurrentRecipeRes = () => {
+  return {type: UPDATE_CURRENT_RECIPE_RES};
 }
 
 export function saveCurrentRecipe(name, id) {
   return function(dispatch) {
+    dispatch(updateCurrentRecipeReq());
     const reqType = id ? 'PUT' : 'POST';
     const baseUrl = `${appUrl}/recipes/`;
     const url = id ? baseUrl + id : baseUrl;
@@ -80,18 +91,31 @@ export function saveCurrentRecipe(name, id) {
     const formData = new FormData();
     formData.append('name', name);
 
-    return fetch(
+    const resp = fetch(
       url,
       { 
         method: reqType,
         body: formData
       }
-    );
+    )
+
+    if (id) {
+      return resp.then(resp => dispatch(updateCurrentRecipeRes()));
+    } else {
+      return resp
+              .then(res => res.json())
+              .then(json => {
+                dispatch(updateCurrentRecipe(json.name, json.id));
+                dispatch(updateCurrentRecipeRes());
+              });
+
+    }
   }
 }
 
 const deleteRecipeRequest = () => ({type: DELETE_RECIPE_REQ});
 const deleteRecipeResponse = (id) => ({type: DELETE_RECIPE_RESP, id: id});
+const removeDeletedAlert = () => ({type: REMOVE_DELETED_ALERT});
 
 export function deleteRecipe(id) {
   return function(dispatch) {
@@ -102,7 +126,10 @@ export function deleteRecipe(id) {
         method: 'DELETE'
       }
     )
-    .then(resp => dispatch(deleteRecipeResponse(id)));
+    .then(resp => {
+      dispatch(deleteRecipeResponse(id));
+      setTimeout(() => dispatch(removeDeletedAlert()), 1500);
+    });
   }
 }
 

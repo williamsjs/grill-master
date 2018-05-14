@@ -1,4 +1,7 @@
+@import '../../../styles/partials/variables';
+
 .delete-btn {
-  border-radius: 0 3px 3px 0;
   position: absolute;
+  color: $watermelon;
+  font-size: 30px;
 }
