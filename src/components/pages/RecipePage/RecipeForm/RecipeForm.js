@@ -2,9 +2,10 @@ import React from 'react';
 import Dropzone from 'react-dropzone'
 import MainInput from '../../../shared/MainInput/MainInput';
 import DeleteBtn from '../../../shared/DeleteBtn/DeleteBtn';
+import AddIngredient from '../AddIngredient/AddIngredient';
 import './RecipeForm.scss';
 
-const RecipeForm = ({onClick, recipe, onChange, onSubmit}) => {
+const RecipeForm = ({onClick, recipe, onChange, onSubmit, ingredients, instructions}) => {
   return (
     <form onSubmit={onSubmit} className="recipe-form">
 
@@ -21,6 +22,8 @@ const RecipeForm = ({onClick, recipe, onChange, onSubmit}) => {
         </div>
         <div className="form-column ingredients">
           <h1 className="col-header">Ingredients</h1>
+          <AddIngredient />
+          {recipe.ingredients.map(ingredient => <p style={{display: 'block'}}>{ingredient}</p>)}
         </div>
         <div className="form-column instructions">
           <h1 className="col-header">Instructions</h1>
