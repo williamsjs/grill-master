@@ -5,7 +5,7 @@ const InputEdit = ({onClick, onBlur, onChange, text}) => {
   return (
     <div className="input-edit">
       <span className="input-icon"><IoEdit /></span>
-      <input type="text" className="inline-edit" value={text} onBlur={onBlur()} onChange={onChange()} />
+      <input type="text" className="inline-edit inline" value={text} onBlur={onBlur()} onChange={onChange()} />
     </div>
   );
 };

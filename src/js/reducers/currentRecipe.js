@@ -1,4 +1,4 @@
-import { RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE, UPDATE_CURRENT_RECIPE_REQ, UPDATE_CURRENT_RECIPE_RES, ADD_INGREDIENT } from '../constants/action-types';
+import { RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE, UPDATE_CURRENT_RECIPE_REQ, UPDATE_CURRENT_RECIPE_RES, ADD_INGREDIENT, ADD_INSTRUCTION } from '../constants/action-types';
 
 const initialState = {
   ingredients: [],
@@ -18,7 +18,9 @@ const currentRecipe = (state = initialState, action) => {
     case UPDATE_CURRENT_RECIPE_RES:
       return {...state, saved: true};
     case ADD_INGREDIENT:
-      return {...state, ingredients: state.ingredients.concat(action.name)}
+      return {...state, ingredients: state.ingredients.concat(action.name)};
+    case ADD_INSTRUCTION:
+      return {...state, instructions: state.instructions.concat(action.name)};
     default:
       return state;
   }

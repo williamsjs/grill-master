@@ -51,6 +51,10 @@
   font-size: 1.5rem;
 }
 
+.inline:focus {
+  outline: none
+}
+
 .center {
   text-align: center;
 }
@@ -61,4 +65,22 @@
 
 .alert-danger {
   background: $bs-danger;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-fixed {
+  position: fixed;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+/* FORMS */
+
+.form-container {
+  background: $primary;
 }

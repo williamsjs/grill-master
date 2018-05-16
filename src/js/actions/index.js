@@ -3,7 +3,7 @@ import {
    UPDATE_RECIPE_REQ, UPDATE_RECIPE, UPDATE_RECIPE_RES,
    RECEIVE_RECIPE, REQUEST_RECIPE, UPDATE_CURRENT_RECIPE_REQ,
    UPDATE_CURRENT_RECIPE_RES, UPDATE_CURRENT_RECIPE, DELETE_RECIPE_REQ, 
-   DELETE_RECIPE_RESP, REMOVE_DELETED_ALERT, ADD_INGREDIENT
+   DELETE_RECIPE_RESP, REMOVE_DELETED_ALERT, ADD_INGREDIENT, ADD_INSTRUCTION
   } from '../constants/action-types';
 
 import fetch from 'cross-fetch';
@@ -135,6 +135,10 @@ export function deleteRecipe(id) {
 
 export function addIngredient(ingredient) {
   return {type: ADD_INGREDIENT, name: ingredient};
+}
+
+export function addInstruction(instruction) {
+  return {type: ADD_INSTRUCTION, name: instruction};
 }
 
 

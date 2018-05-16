@@ -5,14 +5,14 @@ import { withRouter } from 'react-router-dom';
 import './Nav.scss';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
+import SearchBox from '../shared/SearchBox/SearchBox';
+import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
 import IoBeer from 'react-icons/lib/io/beer';
-import IoIosContact from 'react-icons/lib/io/ios-contact';
 import IoFireball from 'react-icons/lib/io/fireball';
-import IoIosSearchStrong from 'react-icons/lib/io/ios-search-strong';
 import MdRestaurant from 'react-icons/lib/md/restaurant';
 
 const mapDispatchToProps = dispatch => ({
-    toggleMenu: () => dispatch(toggleMenu())
+  toggleMenu: () => dispatch(toggleMenu())
 });
 
 const mapStateToProps = state => {
@@ -22,10 +22,12 @@ const mapStateToProps = state => {
 class ConnectedNav extends Component {
   constructor() {
     super();
-    this.state = { navClass: 'main-nav' };
+    this.state = { navClass: 'main-nav', dropdownActive: false };
     this.onscroll = this.onscroll.bind(this);
     this.navClass = this.navClass.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
   }
 
   componentWillMount() {
@@ -56,23 +58,28 @@ class ConnectedNav extends Component {
     this.props.toggleMenu();
   }
 
+  toggleDropdown(e) {
+    e.stopPropagation();
+    this.setState({dropdownActive: !this.state.dropdownActive});
+  }
+
+  hideDropdown() {
+    this.setState({dropdownActive: false});
+  }
+
   render() {
-    const {navClass} = this.state;
+    const {navClass, dropdownActive} = this.state;
 
     return (
-      <nav className={this.navClass()}>
+      <nav className={this.navClass()} onClick={this.hideDropdown} >
         <h1 className="title nav-item">Grill Master <MenuButton handleClick={this.handleClick} /></h1>
         <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot"/>
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer"/>
         <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat"/>
-        <form className="nav-item search-item">
-          <input type="search" placeholder="search"/>
-          <button type="submit"><IoIosSearchStrong /></button>
-        </form>
+        <SearchBox />
+
         <li className="nav-item profile">
-          <a href="#"><IoIosContact />&nbsp;
-            <span className="profile-text">My Profile</span>
-          </a>
+          <ProfileDropdown  toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />
         </li>
       </nav>
     );
