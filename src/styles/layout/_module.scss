@@ -83,4 +83,14 @@
 
 .form-container {
   background: $primary;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group, .form-label, .form-control {
+  padding: 5px;
+}
+
+.form-submit {
+  margin: 10px;
 }

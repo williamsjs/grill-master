@@ -1,17 +1,18 @@
 import React from 'react';
+import IoLogIn from 'react-icons/lib/io/log-in';
 
 const LoginForm = () => {
   return (
-    <form onClick={e => e.stopPropagation()} className="form-container">
+    <form onClick={e => e.stopPropagation()} className="form-container center">
       <div className="form-group">
         <label className="form-label">Email: </label>
-        <input type="text" placeholder="email" />
+        <input className="form-control" type="text" placeholder="email" />
       </div>
       <div className="form-group">
         <label className="form-label">Password: </label>
-        <input type="password" placeholder="password" />
+        <input className="form-control" type="password" placeholder="password" />
       </div>
-      <button className="btn bs-success" type="submit">Login</button>
+      <button className="btn bs-success form-submit" type="submit"><IoLogIn /> Login</button>
     </form>
   );
 };
