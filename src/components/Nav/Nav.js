@@ -76,7 +76,6 @@ class ConnectedNav extends Component {
         <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot"/>
         <NavItem link="/beer" icon={<IoBeer />} linkText="Beer"/>
         <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat"/>
-        <SearchBox />
 
         <li className="nav-item profile">
           <ProfileDropdown  toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />
