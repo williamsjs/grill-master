@@ -1,15 +1,32 @@
 import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Loadable from 'react-loadable';
 import './Page.scss';
-import WhatsHotPage from '../pages/WhatsHotPage/WhatsHotPage';
-import BeerPage from '../pages/BeerPage/BeerPage';
-import MeatPage from '../pages/MeatPage/MeatPage';
-import RecipePage from '../pages/RecipePage/RecipePage';
 
 const mapStateToProps = state => {
   return { menuOpen: state.menuOpen };
 }
+
+const WhatsHotPage = Loadable({
+  loader: () => import('../pages/WhatsHotPage/WhatsHotPage'),
+  loading: () => <h1>Loading</h1>
+});
+
+const BeerPage = Loadable({
+  loader: () => import('../pages/BeerPage/BeerPage'),
+  loading: () => <h1>Loading</h1>
+});
+
+const MeatPage = Loadable({
+  loader: () => import('../pages/MeatPage/MeatPage'),
+  loading: () => <h1>Loading</h1>
+});
+
+const RecipePage = Loadable({
+  loader: () => import('../pages/RecipePage/RecipePage'),
+  loading: () => <h1>Loading</h1>
+});
 
 const ConnectedPage = ({menuOpen}) => {
   return (
