@@ -78,7 +78,7 @@ class ConnectedNav extends Component {
         <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat"/>
 
         <li className="nav-item profile">
-          <ProfileDropdown  toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />
+          <ProfileDropdown toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />
         </li>
       </nav>
     );
