@@ -4,6 +4,10 @@ var MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   output: {
+    filename: '[name].bundle.js',
+    // `chunkFilename` provides a template for naming code-split bundles (optional)
+    chunkFilename: '[name].bundle.js',
+    path: __dirname + '/dist',
     publicPath: '/'
   },
   module: {
@@ -14,21 +18,9 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['transform-object-rest-spread']
+            plugins: ['transform-object-rest-spread', 'syntax-dynamic-import']
           }
         }]
-      },
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        use: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            options: {
-              bypassOnDebug: true,
-            },
-          },
-        ],
       },
       {
         test: /\.(css|scss)$/,
@@ -38,10 +30,6 @@ module.exports = {
           'css-loader', 
           'sass-loader'
         ]
-      },
-      {
-        test: /\.html$/,
-        use: ['html-loader']
       }
     ]
   },
@@ -50,7 +38,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'whats for dinner?',
+      title: 'GrillMaster',
       template: './src/index.html'
     }),
     new MiniCssExtractPlugin({

@@ -14,7 +14,7 @@ const AddItemGen = (actionCreator, placeholder) => ({dispatch}) => {
 
   return (
     <div>
-      <input ref={node => input = node} onKeyPress={handleEvent} type="text" placeholder={placeholder} />
+      <input style={{height: '30px'}} ref={node => input = node} onKeyPress={handleEvent} type="text" placeholder={placeholder} />
       <AddBtn onClick={handleEvent} />
     </div>
   );

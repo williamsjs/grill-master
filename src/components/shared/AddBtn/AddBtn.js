@@ -1,9 +1,10 @@
 import React from 'react';
 import IoPlusCircled from 'react-icons/lib/io/plus-circled';
+import './AddBtn.scss';
 
 const AddBtn = ({text, onClick}) => {
   return (
-    <button className="btn watermelon" onClick={onClick} ><IoPlusCircled />{text}</button>
+    <button className="add-btn" onClick={onClick} ><IoPlusCircled />{text}</button>
   );
 };
 

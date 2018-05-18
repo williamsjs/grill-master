@@ -4,7 +4,7 @@
 html {
   box-sizing: border-box;
   font-size: 16px;
-  font-family: $primary-font;
+  font-family: $third-font;
   background: radial-gradient(#444, #000);
 
   @include medium() {
@@ -38,6 +38,12 @@ li {
   list-style-type: none;
 }
 
-input[type="text"], input[type="search"], input[type="password"] {
+input[type="search"], input[type="password"] {
   border: none;
+}
+
+input[type="text"] {
+  border-radius: 5px;
+  padding: 5px;
+  border-style: ridge;
 }
