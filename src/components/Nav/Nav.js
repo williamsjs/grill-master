@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { toggleMenu } from '../../js/actions/index';
+import { toggleMenu } from '../../js/ducks/menuToggle';
 import { withRouter } from 'react-router-dom';
 import './Nav.scss';
 import NavItem from './NavItem';
@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
-  return {menuOpen: state.menuOpen};
+  return {menuOpen: state.menuToggle};
 }
 
 class ConnectedNav extends Component {

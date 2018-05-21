@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getRecipe, updateCurrentRecipe, saveCurrentRecipe, deleteRecipe } from '../../../js/actions/index';
+import { deleteRecipe } from '../../../js/ducks/recipes';
+import { getRecipe, updateCurrentRecipe, saveCurrentRecipe } from '../../../js/ducks/currentRecipe';
 import RecipeForm from './RecipeForm/RecipeForm';
 import BackButton from '../../shared/BackButton/BackButton';
 import LoadingOverlay from '../../shared/LoadingOverlay/LoadingOverlay';

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import './MenuButton.scss';
 
 const mapStateToProps = state => ({
-  menuOpen: state.menuOpen
+  menuOpen: state.menuToggle
 });
 
 const ConnectedMenuButton = ({menuOpen, handleClick}) => {

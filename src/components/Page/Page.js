@@ -5,7 +5,7 @@ import Loadable from 'react-loadable';
 import './Page.scss';
 
 const mapStateToProps = state => {
-  return { menuOpen: state.menuOpen };
+  return { menuOpen: state.menuToggle };
 }
 
 const WhatsHotPage = Loadable({

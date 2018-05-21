@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { toggleMenu } from '../../js/actions/index';
+import { toggleMenu } from '../../js/ducks/menuToggle';
 import { withRouter } from 'react-router-dom';
 
 const mapDispatchToProps = dispatch => ({
@@ -9,7 +9,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ConnectNavItem = ({link, linkText, icon, handleClick}) => {
-
   const checkWindowWidth = () => {
     if (window.innerWidth < 767) {
       handleClick();

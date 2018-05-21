@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import IoPlusCircled from 'react-icons/lib/io/plus-circled';
-import { fetchRecipes, saveRecipe, updateRecipe, deleteRecipe } from '../../../js/actions/index';
+import { fetchRecipes, deleteRecipe } from '../../../js/ducks/recipes';
+import { saveRecipe, reviseRecipe } from '../../../js/ducks/updateRecipe';
 import { Link } from 'react-router-dom';
 import CardList from '../../shared/CardList/CardList';
 import Card from '../../shared/Card/Card';
@@ -13,7 +14,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  updateRecipe: (recipe, newVal) => dispatch(updateRecipe(recipe, newVal)),
+  updateRecipe: (recipe, newVal) => dispatch(reviseRecipe(recipe, newVal)),
   saveRecipe: recipe => dispatch(saveRecipe(recipe)),
   fetchRecipes: () => dispatch(fetchRecipes()),
   deleteRecipe: id => dispatch(deleteRecipe(id))
