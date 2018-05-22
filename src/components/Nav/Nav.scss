@@ -19,8 +19,11 @@
       margin-right: auto;
       font-size: 26px;
       letter-spacing: .05rem;
-      color: $lemon;
       text-shadow: 1px 1px 1px #000;
+
+      a {
+        color: $lemon;
+      }
     }
   
     input[type="search"] {

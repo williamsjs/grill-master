@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { toggleMenu } from '../../js/ducks/menuToggle';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Nav.scss';
 import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
@@ -15,9 +15,10 @@ const mapDispatchToProps = dispatch => ({
   toggleMenu: () => dispatch(toggleMenu())
 });
 
-const mapStateToProps = state => {
-  return {menuOpen: state.menuToggle};
-}
+const mapStateToProps = state => ({
+  menuOpen: state.menuToggle,
+  user: state.user
+});
 
 class ConnectedNav extends Component {
   constructor() {
@@ -69,13 +70,13 @@ class ConnectedNav extends Component {
 
   render() {
     const {navClass, dropdownActive} = this.state;
-
     return (
       <nav className={this.navClass()} onClick={this.hideDropdown} >
-        <h1 className="title nav-item">Grill Master <MenuButton handleClick={this.handleClick} /></h1>
-        <NavItem link="/whats-hot" icon={<IoFireball />} linkText="What's Hot"/>
-        <NavItem link="/beer" icon={<IoBeer />} linkText="Beer"/>
-        <NavItem link="/meat" icon={<MdRestaurant />} linkText="Meat"/>
+        <h1 className="title nav-item"><Link to="/">Grill Master</Link><MenuButton handleClick={this.handleClick} /></h1>
+        <NavItem link="/" display={true} icon={<IoFireball />} linkText="What's Hot"/>
+        <NavItem link="/beer" display={this.props.user.id} icon={<IoBeer />} linkText="Beer"/>
+        <NavItem link="/meat" display={this.props.user.id} icon={<MdRestaurant />} linkText="Meat"/> 
+
 
         <li className="nav-item profile">
           <ProfileDropdown toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />

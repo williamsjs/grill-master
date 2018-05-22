@@ -47,7 +47,6 @@ export function saveCurrentRecipe(name, id) {
     formData.append('name', name);
 
     const options = createOptions({method: reqType, body: formData});
-
     const resp = fetch(url, options);
 
     if (id) {

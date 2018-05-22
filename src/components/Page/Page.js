@@ -32,7 +32,7 @@ const ConnectedPage = ({menuOpen}) => {
   return (
     <div className={menuOpen ? "page open" : "page"}>
       <Switch>
-        <Route exact path="/whats-hot" component={WhatsHotPage} />
+        <Route exact path="/" component={WhatsHotPage} />
         <Route exact path="/beer" component={BeerPage} />
         <Route exact path="/meat" component={MeatPage} />
         <Route path="/meat/:id" component={RecipePage} />
