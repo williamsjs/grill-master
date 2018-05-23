@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch';
 import appUrl from '../constants/appUrl';
-import { createOptions } from '../localStorage';
+import { createOptions } from '../utilities/createOptions';
 const SIGN_OUT = 'SIGN_OUT';
 const SIGN_IN_REQ = 'SIGN_IN_REQ';
 const SIGN_IN_FAIL = 'SIGN_IN_FAIL';

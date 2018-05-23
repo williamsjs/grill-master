@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch';
 import appUrl from '../constants/appUrl';
-import { createOptions } from '../localStorage';
+import { createOptions } from '../utilities/createOptions';
 
 export const UPDATE_RECIPE_REQ = 'UPDATE_RECIPE_REQ';
 export const UPDATE_RECIPE_RES = 'UPDATE_RECIPE_RES';

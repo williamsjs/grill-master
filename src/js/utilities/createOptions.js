@@ -1,4 +1,3 @@
-
 export const createOptions = (options = {}) => {
   const jwt = localStorage.getItem('jwt');
 

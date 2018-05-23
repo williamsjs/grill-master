@@ -1,6 +1,7 @@
 import fetch from 'cross-fetch';
 import appUrl from '../constants/appUrl';
-import { createOptions } from '../localStorage';
+import { createOptions } from '../utilities/createOptions';
+import { fetchWrapper } from '../utilities/fetchWrapper';
 
 const UPDATE_RECIPE = 'UPDATE_RECIPE';
 const REQUEST_RECIPE = 'REQUEST_RECIPE';
@@ -47,16 +48,16 @@ export function saveCurrentRecipe(name, id) {
     formData.append('name', name);
 
     const options = createOptions({method: reqType, body: formData});
-    const resp = fetch(url, options);
+    const resp = fetchWrapper(url, options);
 
     if (id) {
       return resp.then(resp => dispatch(updateCurrentRecipeRes()));
     } else {
-      return resp.then(res => res.json())
-                  .then(json => {
+      return resp.then(json => {
                     dispatch(updateCurrentRecipe(json.name, json.id));
                     dispatch(updateCurrentRecipeRes());
-                  });
+                  })
+                  .catch(e => console.log(e));
 
     }
   }

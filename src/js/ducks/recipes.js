@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import { createOptions } from '../localStorage';
+import { createOptions } from '../utilities/createOptions';
 import { UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, UPDATE_RECIPE } from './updateRecipe';
 import appUrl from '../constants/appUrl';
 
