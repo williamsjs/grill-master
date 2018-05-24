@@ -4,7 +4,7 @@ import DropdownMenu from '../shared/DropdownMenu/DropdownMenu';
 import DropdownBtn from '../shared/DropdownBtn/DropdownBtn';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
 
-const ProfileDropdown = ({toggleDropdown, dropdownActive}) => {
+const ProfileDropdown = ({toggleDropdown, dropdownActive, loggedIn}) => {
   return (
     <div className="position-relative">
       <DropdownBtn onClick={toggleDropdown}>
@@ -12,7 +12,11 @@ const ProfileDropdown = ({toggleDropdown, dropdownActive}) => {
         <span className="profile-text">My Profile</span>
       </DropdownBtn>
       <DropdownMenu active={dropdownActive} style={{right: '0'}} >
-        <LoginForm />
+        {loggedIn ? (
+          <h1>lol</h1>
+        ) : (
+          <LoginForm />
+        )}
       </DropdownMenu>
     </div>
   );

@@ -6,7 +6,7 @@ export const UPDATE_RECIPE_REQ = 'UPDATE_RECIPE_REQ';
 export const UPDATE_RECIPE_RES = 'UPDATE_RECIPE_RES';
 export const UPDATE_RECIPE = 'UPDATE_RECIPE';
 
-const reviseRecipe = (id, newVal) => ({type: UPDATE_RECIPE,  id: id, newVal: newVal});
+export const reviseRecipe = (id, newVal) => ({type: UPDATE_RECIPE,  id: id, newVal: newVal});
 const saveRecipeRequest = id => ({type: UPDATE_RECIPE_REQ, id: id});
 const saveRecipeResponse = id => ({type: UPDATE_RECIPE_RES, id: id});
 

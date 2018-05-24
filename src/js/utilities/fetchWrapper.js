@@ -6,7 +6,7 @@ const isValid = response => {
   }
 }
 
-const parseJson = response => response.json();
+const parseJson = response => response.status === 204 ? response : response.json();
 
 export const fetchWrapper = (url, options) => {
   return fetch(url, options)

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { toggleMenu } from '../../js/ducks/menuToggle';
+import { getUserInfo, toggleDropdown, hideDropdown } from '../../js/ducks/user';
 import { withRouter, Link } from 'react-router-dom';
 import './Nav.scss';
 import NavItem from './NavItem';
@@ -11,9 +13,14 @@ import IoBeer from 'react-icons/lib/io/beer';
 import IoFireball from 'react-icons/lib/io/fireball';
 import MdRestaurant from 'react-icons/lib/md/restaurant';
 
-const mapDispatchToProps = dispatch => ({
-  toggleMenu: () => dispatch(toggleMenu())
-});
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    toggleMenu: toggleMenu, 
+    login: getUserInfo, 
+    toggleDropdown: toggleDropdown, 
+    hideDropdown: hideDropdown
+  }, dispatch)
+);
 
 const mapStateToProps = state => ({
   menuOpen: state.menuToggle,
@@ -27,8 +34,10 @@ class ConnectedNav extends Component {
     this.onscroll = this.onscroll.bind(this);
     this.navClass = this.navClass.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.hideDropdown = this.hideDropdown.bind(this);
     this.toggleDropdown = this.toggleDropdown.bind(this);
     this.hideDropdown = this.hideDropdown.bind(this);
+
   }
 
   componentWillMount() {
@@ -39,6 +48,8 @@ class ConnectedNav extends Component {
 
   componentDidMount() {
     window.addEventListener('scroll', this.onscroll);
+    this.props.login();
+
   }
 
   componentWillUnmount() {
@@ -61,15 +72,17 @@ class ConnectedNav extends Component {
 
   toggleDropdown(e) {
     e.stopPropagation();
-    this.setState({dropdownActive: !this.state.dropdownActive});
+    this.props.toggleDropdown();
   }
 
   hideDropdown() {
-    this.setState({dropdownActive: false});
+    this.props.hideDropdown();
   }
 
   render() {
-    const {navClass, dropdownActive} = this.state;
+    const {navClass} = this.state;
+    const { user: { loggedIn, dropdownOpen } } = this.props;
+
     return (
       <nav className={this.navClass()} onClick={this.hideDropdown} >
         <h1 className="title nav-item"><Link to="/">Grill Master</Link><MenuButton handleClick={this.handleClick} /></h1>
@@ -79,7 +92,7 @@ class ConnectedNav extends Component {
 
 
         <li className="nav-item profile">
-          <ProfileDropdown toggleDropdown={this.toggleDropdown} dropdownActive={dropdownActive} />
+          <ProfileDropdown toggleDropdown={this.toggleDropdown} dropdownActive={dropdownOpen} loggedIn={loggedIn} />
         </li>
       </nav>
     );

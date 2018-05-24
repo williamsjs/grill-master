@@ -1,4 +1,3 @@
-import fetch from 'cross-fetch';
 import appUrl from '../constants/appUrl';
 import { createOptions } from '../utilities/createOptions';
 import { fetchWrapper } from '../utilities/fetchWrapper';
@@ -19,7 +18,7 @@ export function getRecipe(id) {
   return function(dispatch) {
     dispatch(requestRecipe());
 
-    return fetch(`${appUrl}/recipes/${id}`)
+    return fetchWrapper(`${appUrl}/recipes/${id}`, createOptions())
       .then(res => res.json())
       .then(json => dispatch(receiveRecipe(json)));
   }

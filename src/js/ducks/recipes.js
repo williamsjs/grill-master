@@ -1,6 +1,6 @@
 import fetch from 'cross-fetch';
 import { createOptions } from '../utilities/createOptions';
-import { UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, UPDATE_RECIPE } from './updateRecipe';
+import { UPDATE_RECIPE_REQ, UPDATE_RECIPE_RES, UPDATE_RECIPE, updateRecipe } from './updateRecipe';
 import appUrl from '../constants/appUrl';
 
 const REQUEST_ALL_RECIPES = 'REQUEST_ALL_RECIPES';
@@ -21,9 +21,7 @@ export function fetchRecipes() {
   return function(dispatch) {
     dispatch(requestAllRecipes());
 
-    const options = createOptions();
-
-    return fetch(`${appUrl}/recipes`, options)
+    return fetch(`${appUrl}/recipes`, createOptions())
       .then(response => response.json())
       .then(json => dispatch(receiveAllRecipes(json)));
   };
@@ -34,10 +32,7 @@ const removeDeletedAlert = () => ({type: REMOVE_DELETED_ALERT});
 
 export function deleteRecipe(id) {
   return function(dispatch) {
-
-    const options = createOptions({method: 'DELETE'});
-
-    return fetch(`${appUrl}/recipes/${id}`, options)
+    return fetch(`${appUrl}/recipes/${id}`, createOptions({method: 'DELETE'}))
     .then(resp => {
       dispatch(deleteRecipeResponse(id));
       setTimeout(() => dispatch(removeDeletedAlert()), 1500);
