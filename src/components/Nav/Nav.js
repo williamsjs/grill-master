@@ -86,7 +86,7 @@ class ConnectedNav extends Component {
     return (
       <nav className={this.navClass()} onClick={this.hideDropdown} >
         <h1 className="title nav-item"><Link to="/">Grill Master</Link><MenuButton handleClick={this.handleClick} /></h1>
-        <NavItem link="/" display={true} icon={<IoFireball />} linkText="What's Hot"/>
+        <NavItem exact link="/" display={true} icon={<IoFireball />} linkText="What's Hot"/>
         <NavItem link="/beer" display={this.props.user.id} icon={<IoBeer />} linkText="Beer"/>
         <NavItem link="/meat" display={this.props.user.id} icon={<MdRestaurant />} linkText="Meat"/> 
 

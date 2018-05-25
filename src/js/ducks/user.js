@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch';
+import fetchWrapper from '../utilities/fetchWrapper';
 import appUrl from '../constants/appUrl';
 import { createOptions } from '../utilities/createOptions';
 
@@ -13,21 +13,17 @@ const HIDE_DROPDOWN = 'HIDE_DROPDOWN';
 const signInReq = () => ({type: SIGN_IN_REQ});
 const signInRes = () => ({type: SIGN_IN_RES});
 const signInFail = () => ({type: SIGN_IN_FAIL});
-const signOut = () => ({type: SIGN_OUT});
 const saveUser = (id, email) => ({type: SAVE_USER, id: id, email: email});
 
+export const signOut = () => ({type: SIGN_OUT});
 export const toggleDropdown = () => ({type: TOGGLE_DROPDOWN});
 export const hideDropdown = () => ({type: HIDE_DROPDOWN});
 
 
 export const signIn = (email, password) => {
+  console.log(email, password);
   return function(dispatch) {
     dispatch(signInReq());
-
-    const handleResponse = res => {
-      res.status === 201 ? dispatch(signInRes()) : dispatch(signInFail());
-      return res.json();
-    };
 
     const formData = new FormData();
     formData.append('email', email);
@@ -38,18 +34,17 @@ export const signIn = (email, password) => {
       body: formData
     };
 
-    fetch(`${appUrl}/user_token`, options)
-      .then(handleResponse)
+    fetchWrapper(`${appUrl}/user_token`, options)
       .then(json => {
+        dispatch(signInRes())
         localStorage.setItem('jwt', json.jwt);
         getUserInfo()(dispatch.bind(this));
-      });
+      }).catch(e => dispatch(signInFail()));
   }
 };
 
 export const getUserInfo = () => dispatch => {
-  fetch(`${appUrl}/my_user`, createOptions())
-    .then(res => res.json())
+  fetchWrapper(`${appUrl}/my_user`, createOptions())
     .then(json => dispatch(saveUser(json.id, json.email)));
 };
 
@@ -65,7 +60,7 @@ const user = (state = initialState, action) => {
     case SIGN_IN_REQ:
       return {...state, fetching: true, signInFail: false };
     case SIGN_OUT:
-      return {...state, fetching: false, loggedIn: false, email: undefined};
+      return {...state, fetching: false, loggedIn: false, email: undefined, id: undefined};
     case SIGN_IN_RES:
       return {...state, fetching: false, loggedIn: true, signInFail: false};
     case SIGN_IN_FAIL:

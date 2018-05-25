@@ -3,8 +3,6 @@ import Draggable from 'react-draggable';
 
 const WhatsHot = () => {
   const eventLogger = (e, data) => {
-    console.log('Event: ', e);
-    console.log('Data: ', data);
   };
 
   const handleStart = () => {};

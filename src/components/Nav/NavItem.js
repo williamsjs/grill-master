@@ -8,7 +8,7 @@ const mapDispatchToProps = dispatch => ({
   handleClick: () => dispatch(toggleMenu())
 });
 
-const ConnectNavItem = ({link, linkText, icon, handleClick, display}) => {
+const ConnectNavItem = ({link, linkText, icon, handleClick, display, exact}) => {
   const checkWindowWidth = () => {
     if (window.innerWidth < 767) {
       handleClick();
@@ -21,7 +21,7 @@ const ConnectNavItem = ({link, linkText, icon, handleClick, display}) => {
 
   return (
     <li className={displayItem()}>
-      <NavLink exact to={link} activeClassName="link-active" onClick={checkWindowWidth}>{icon} &nbsp;{linkText}</NavLink>
+      <NavLink exact={exact} to={link} activeClassName="link-active" onClick={checkWindowWidth}>{icon} &nbsp;{linkText}</NavLink>
     </li>
   );
 };

@@ -1,10 +1,10 @@
 import React from 'react';
-import LoginForm from '../shared/LoginForm/LoginForm';
+import AuthForm from '../shared/AuthForm/AuthForm';
 import DropdownMenu from '../shared/DropdownMenu/DropdownMenu';
 import DropdownBtn from '../shared/DropdownBtn/DropdownBtn';
 import IoIosContact from 'react-icons/lib/io/ios-contact';
 
-const ProfileDropdown = ({toggleDropdown, dropdownActive, loggedIn}) => {
+const ProfileDropdown = ({toggleDropdown, dropdownActive}) => {
   return (
     <div className="position-relative">
       <DropdownBtn onClick={toggleDropdown}>
@@ -12,11 +12,7 @@ const ProfileDropdown = ({toggleDropdown, dropdownActive, loggedIn}) => {
         <span className="profile-text">My Profile</span>
       </DropdownBtn>
       <DropdownMenu active={dropdownActive} style={{right: '0'}} >
-        {loggedIn ? (
-          <h1>lol</h1>
-        ) : (
-          <LoginForm />
-        )}
+        <AuthForm />
       </DropdownMenu>
     </div>
   );

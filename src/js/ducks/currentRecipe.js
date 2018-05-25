@@ -1,6 +1,6 @@
 import appUrl from '../constants/appUrl';
 import { createOptions } from '../utilities/createOptions';
-import { fetchWrapper } from '../utilities/fetchWrapper';
+import fetchWrapper from '../utilities/fetchWrapper';
 
 const UPDATE_RECIPE = 'UPDATE_RECIPE';
 const REQUEST_RECIPE = 'REQUEST_RECIPE';
@@ -19,7 +19,6 @@ export function getRecipe(id) {
     dispatch(requestRecipe());
 
     return fetchWrapper(`${appUrl}/recipes/${id}`, createOptions())
-      .then(res => res.json())
       .then(json => dispatch(receiveRecipe(json)));
   }
 }

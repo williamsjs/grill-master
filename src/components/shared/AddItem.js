@@ -1,13 +1,13 @@
 import React from 'react';
 import AddBtn from '../shared/AddBtn/AddBtn';
 
-const AddItemGen = (actionCreator, placeholder) => ({dispatch}) => {
+const AddItem = ({addItem, placeholder}) => {
   let input;
 
   const handleEvent = e => {
     if (((e.type === 'keypress' && e.key === 'Enter') || e.type === 'click') && input.value.trim()) {
       e.preventDefault();
-      dispatch(actionCreator(input.value));
+      addItem(input.value);
       input.value = '';
     }
   }
@@ -20,5 +20,5 @@ const AddItemGen = (actionCreator, placeholder) => ({dispatch}) => {
   );
 };
 
-export default AddItemGen;
+export default AddItem;
 

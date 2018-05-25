@@ -22,12 +22,12 @@ const RecipeForm = ({onClick, recipe, onChange, onSubmit, ingredients, instructi
         </div>
         <div className="form-column ingredients">
           <h1 className="col-header">Ingredients</h1>
-          <AddIngredient />
+          <AddIngredient placeholder={"ingredient"} />
           {recipe.ingredients.map(ingredient => <p style={{display: 'block'}}>{ingredient}</p>)}
         </div>
         <div className="form-column instructions">
           <h1 className="col-header">Instructions</h1>
-          <AddInstruction />
+          <AddInstruction placeholder={"instruction"} />
           {recipe.instructions.map(instruction => <p style={{display: 'block'}}>{instruction}</p>)}
         </div>
       </div>

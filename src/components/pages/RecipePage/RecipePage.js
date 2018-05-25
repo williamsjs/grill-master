@@ -60,6 +60,7 @@ class ConnectedRecipePage extends Component {
 
   render() {
     const { loading, history, recipe, deleteRecipe } = this.props;
+
     return (
       <div className="recipe-page">
         <BackButton goBack={history.goBack} />
