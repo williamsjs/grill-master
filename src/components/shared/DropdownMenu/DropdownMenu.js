@@ -3,7 +3,7 @@ import './DropdownMenu.scss';
 
 const DropdownMenu = ({children, active}) => {
   const className = () => {
-    return active ? 'position-absolute dropdown-container' : 'position-absolute display-none';
+    return active ? 'dropdown-container' : 'display-none';
   }
 
   return (
