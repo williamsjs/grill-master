@@ -11,7 +11,7 @@ const ProfileDropdown = ({toggleDropdown, dropdownActive}) => {
         <IoIosContact />&nbsp;
         <span className="profile-text">My Profile</span>
       </DropdownBtn>
-      <DropdownMenu active={dropdownActive} style={{right: '0'}} >
+      <DropdownMenu active={dropdownActive} >
         <AuthForm />
       </DropdownMenu>
     </div>

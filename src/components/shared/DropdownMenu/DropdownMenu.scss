@@ -1,8 +1,15 @@
+@import '../../../styles/partials/variables';
+@import '../../../styles/partials/mixins';
+
 .dropdown-container {
-  background: #fff;
-  margin-bottom: 20px;
+  right: 7px;
+
+  @include medium-to-small() {
+    left: 0;
+    right: auto;
+  }
 }
-
-.arrow-up {
-
+.dropdown-body {
+  background: $watermelon;
+  color: $primary;
 }

@@ -21,7 +21,6 @@ export const hideDropdown = () => ({type: HIDE_DROPDOWN});
 
 
 export const signIn = (email, password) => {
-  console.log(email, password);
   return function(dispatch) {
     dispatch(signInReq());
 

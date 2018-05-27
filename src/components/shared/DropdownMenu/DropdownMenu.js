@@ -1,15 +1,14 @@
 import React from 'react';
 import './DropdownMenu.scss';
 
-const DropdownMenu = ({children, active, style}) => {
+const DropdownMenu = ({children, active}) => {
   const className = () => {
     return active ? 'position-absolute dropdown-container' : 'position-absolute display-none';
   }
 
   return (
-    <div className={className()} style={style} >
-      <div className="arrow-up"></div>
-      {children}
+    <div className={className()}>
+      <div className="dropdown-body center">{children}</div>
     </div>
   );
 };
