@@ -15,10 +15,19 @@ const signInRes = () => ({type: SIGN_IN_RES});
 const signInFail = () => ({type: SIGN_IN_FAIL});
 const saveUser = (id, email) => ({type: SAVE_USER, id: id, email: email});
 
-export const signOut = () => ({type: SIGN_OUT});
+export const signOutAC = () => ({type: SIGN_OUT});
 export const toggleDropdown = () => ({type: TOGGLE_DROPDOWN});
 export const hideDropdown = () => ({type: HIDE_DROPDOWN});
 
+export const signOut = () => {
+  return dispatch => {
+    if (localStorage.getItem('jwt')) {
+      localStorage.removeItem('jwt');
+    }
+
+    dispatch(signOutAC());
+  }
+}
 
 export const signIn = (email, password) => {
   return function(dispatch) {
