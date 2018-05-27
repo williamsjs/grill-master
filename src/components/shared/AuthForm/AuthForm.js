@@ -1,11 +1,11 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ReactLoading from 'react-loading';
 import { signIn, signOut } from '../../../js/ducks/user';
 import IoLogIn from 'react-icons/lib/io/log-in';
 import IoLogOut from 'react-icons/lib/io/log-out';
-
 import './AuthForm.scss';
 
 const mapDispatchToProps = dispatch => (
@@ -21,7 +21,7 @@ const mapStateToProps = state => ({
   loggedIn: state.user.loggedIn
 });
 
-const ConnectedAuthForm = ({signIn, signOut, loggedIn, fetching, failure}) => {
+const ConnectedAuthForm = ({signIn, signOut, loggedIn, fetching, failure, history}) => {
   let email, password;
 
   const handleSubmit = e => {
@@ -29,9 +29,14 @@ const ConnectedAuthForm = ({signIn, signOut, loggedIn, fetching, failure}) => {
     signIn(email.value, password.value);
   }
 
+  const navigate = e => {
+    history.push('/');
+    signOut();
+  }
+
   if (loggedIn) {
     return (
-      <div className="logout-container" onClick={signOut}>
+      <div className="logout-container" onClick={navigate}>
         <button className="btn bs-success">logout <IoLogOut /></button>
       </div>
     )
@@ -63,6 +68,6 @@ const ConnectedAuthForm = ({signIn, signOut, loggedIn, fetching, failure}) => {
   }
 };
 
-const AuthForm = connect(mapStateToProps, mapDispatchToProps)(ConnectedAuthForm);
+const AuthForm = withRouter(connect(mapStateToProps, mapDispatchToProps)(ConnectedAuthForm));
 
 export default AuthForm;
