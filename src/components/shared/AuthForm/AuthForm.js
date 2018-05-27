@@ -37,7 +37,7 @@ const ConnectedAuthForm = ({signIn, signOut, loggedIn, fetching, failure, histor
   if (loggedIn) {
     return (
       <div className="logout-container" onClick={navigate}>
-        <button className="btn bs-success">logout <IoLogOut /></button>
+        <IoLogOut />
       </div>
     )
   } else {
