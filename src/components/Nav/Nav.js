@@ -9,7 +9,6 @@ import NavItem from './NavItem';
 import MenuButton from '../shared/MenuButton/MenuButton';
 import SearchBox from '../shared/SearchBox/SearchBox';
 import ProfileDropdown from '../ProfileDropdown/ProfileDropdown';
-import IoBeer from 'react-icons/lib/io/beer';
 import IoFireball from 'react-icons/lib/io/fireball';
 import MdRestaurant from 'react-icons/lib/md/restaurant';
 
@@ -87,7 +86,6 @@ class ConnectedNav extends Component {
       <nav className={this.navClass()} onClick={this.hideDropdown} >
         <h1 className="title nav-item"><Link to="/">Grill Master</Link><MenuButton handleClick={this.handleClick} /></h1>
         <NavItem exact link="/" display={true} icon={<IoFireball />} linkText="What's Hot"/>
-        <NavItem link="/beer" display={this.props.user.id} icon={<IoBeer />} linkText="Beer"/>
         <NavItem link="/meat" display={this.props.user.id} icon={<MdRestaurant />} linkText="Meat"/> 
 
 

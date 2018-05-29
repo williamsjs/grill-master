@@ -13,11 +13,6 @@ const WhatsHotPage = Loadable({
   loading: () => <h1>Loading</h1>
 });
 
-const BeerPage = Loadable({
-  loader: () => import('../pages/BeerPage/BeerPage'),
-  loading: () => <h1>Loading</h1>
-});
-
 const MeatPage = Loadable({
   loader: () => import('../pages/MeatPage/MeatPage'),
   loading: () => <h1>Loading</h1>
@@ -33,7 +28,6 @@ const ConnectedPage = ({menuOpen}) => {
     <div className={menuOpen ? "page open" : "page"}>
       <Switch>
         <Route exact path="/" component={WhatsHotPage} />
-        <Route exact path="/beer" component={BeerPage} />
         <Route exact path="/meat" component={MeatPage} />
         <Route path="/meat/:id" component={RecipePage} />
       </Switch>
