@@ -3,7 +3,9 @@ import DraggableItem from './DraggableItem';
 
 const DraggableList = ({items}) => {
   return (
-    items.map(item => <DraggableItem item={item} />)
+    <div className="draggable-list">
+      {items.map(item => <DraggableItem item={item} />)}
+    </div>
   );
 };
 

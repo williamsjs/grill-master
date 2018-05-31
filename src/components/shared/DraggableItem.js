@@ -18,7 +18,7 @@ class SourceDraggableItem extends Component {
   render() {
     const {item, isDragging, connectDragSource} = this.props;
     return connectDragSource(
-      <li style={isDragging ? {display: 'none'} : {}} >{item}</li>
+      <li className="draggable-item" style={isDragging ? {display: 'none'} : {}} >{item}</li>
     );
   }
 };

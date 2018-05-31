@@ -109,3 +109,20 @@ input[type="text"].inline {
   
   border-bottom: 10px solid $primary;
 }
+
+/* DRAGGABLE */
+
+.draggable-list {
+  margin-top: 20px;
+}
+
+.draggable-item {
+  margin: 10px auto;
+  background: #FD5B78;
+  color: #FFFBFA;
+  border-radius: 3px;
+  height: 30px;
+  width: 200px;
+  padding-top: 5px;
+  font-size: 15px;
+}
