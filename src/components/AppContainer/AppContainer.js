@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import HTML5Backend from 'react-dnd-html5-backend';
+import { DragDropContext } from 'react-dnd';
 import Nav from '../Nav/Nav';
 import Page from '../Page/Page';
 
@@ -10,4 +12,4 @@ const AppContainer = () => (
   </div>
 );
 
-export default AppContainer;
+export default  DragDropContext(HTML5Backend)(AppContainer);

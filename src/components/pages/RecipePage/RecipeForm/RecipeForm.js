@@ -2,12 +2,11 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import MainInput from '../../../shared/MainInput/MainInput';
 import DeleteBtn from '../../../shared/DeleteBtn/DeleteBtn';
-import DraggableItems from '../../../shared/DraggableItems';
 import { AddIngredient, AddInstruction } from './AddItems';
+import DraggableList from '../../../shared/DraggableList';
 import './RecipeForm.scss';
 
 const RecipeForm = ({onClick, recipe, onChange, onSubmit, ingredients, instructions}) => {
-  
   return (
     <form onSubmit={onSubmit} className="recipe-form">
 
@@ -25,12 +24,12 @@ const RecipeForm = ({onClick, recipe, onChange, onSubmit, ingredients, instructi
         <div className="form-column ingredients">
           <h1 className="col-header">Ingredients</h1>
           <AddIngredient placeholder={"ingredient"} />
-          <DraggableItems items={recipe.ingredients} />
+          <DraggableList items={recipe.ingredients} />
         </div>
         <div className="form-column instructions">
           <h1 className="col-header">Instructions</h1>
           <AddInstruction placeholder={"instruction"} />
-          <DraggableItems items={recipe.instructions} />
+          <DraggableList items={recipe.instructions} />
         </div>
       </div>
       <div className="center">
