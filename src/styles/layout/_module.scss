@@ -125,4 +125,8 @@ input[type="text"].inline {
   width: 200px;
   padding-top: 5px;
   font-size: 15px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
