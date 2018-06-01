@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { DragSource, DragDropContext} from 'react-dnd';
+import { DragSource, DropTarget } from 'react-dnd';
+
+const styles = {
+	border: '1px dashed gray',
+	padding: '0.5rem 1rem',
+  marginBottom: '.5rem',
+  background: 'white',
+  cursor: 'move',
+  color: 'black'
+}
 
 const itemSource = {
   beginDrag(props) {
@@ -17,8 +26,10 @@ function collect(connect, monitor) {
 class SourceDraggableItem extends Component {
   render() {
     const {item, isDragging, connectDragSource} = this.props;
+    const opacity = isDragging ? 0 : 1;
+    
     return connectDragSource(
-      <li className="draggable-item" style={isDragging ? {display: 'none'} : {}} >{item}</li>
+      <li className="draggable-item" style={{...styles, opacity}} >{item}</li>
     );
   }
 };

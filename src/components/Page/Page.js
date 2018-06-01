@@ -10,17 +10,17 @@ const mapStateToProps = state => {
 
 const WhatsHotPage = Loadable({
   loader: () => import('../pages/WhatsHotPage/WhatsHotPage'),
-  loading: () => <h1>Loading</h1>
+  loading: () => <h1>Loading...</h1>
 });
 
 const MeatPage = Loadable({
   loader: () => import('../pages/MeatPage/MeatPage'),
-  loading: () => <h1>Loading</h1>
+  loading: () => <h1>Loading...</h1>
 });
 
 const RecipePage = Loadable({
   loader: () => import('../pages/RecipePage/RecipePage'),
-  loading: () => <h1>Loading</h1>
+  loading: () => <h1>Loading...</h1>
 });
 
 const ConnectedPage = ({menuOpen}) => {
