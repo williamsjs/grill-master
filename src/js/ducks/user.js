@@ -9,12 +9,16 @@ const SIGN_IN_RES = 'SIGN_IN_RES';
 const SAVE_USER = 'SAVE_USER';
 const TOGGLE_DROPDOWN = 'TOGGLE_DROPDOWN';
 const HIDE_DROPDOWN = 'HIDE_DROPDOWN';
+const PASSWORD_INPUT_CHANGE = 'PASSWORD_INPUT_CHANGE';
+const EMAIL_INPUT_CHANGE = 'EMAIL_INPUT_CHANGE';
 
 const signInReq = () => ({type: SIGN_IN_REQ});
 const signInRes = () => ({type: SIGN_IN_RES});
 const signInFail = () => ({type: SIGN_IN_FAIL});
 const saveUser = (id, email) => ({type: SAVE_USER, id: id, email: email});
 
+export const emailInputChange = email => ({type: EMAIL_INPUT_CHANGE, email: email});
+export const passwordInputChange = password => ({type: PASSWORD_INPUT_CHANGE, password: password});
 export const signOutAC = () => ({type: SIGN_OUT});
 export const toggleDropdown = () => ({type: TOGGLE_DROPDOWN});
 export const hideDropdown = () => ({type: HIDE_DROPDOWN});
@@ -60,7 +64,9 @@ const initialState = {
   loggedIn: false,
   fetching: false,
   signInFail: false,
-  dropdownOpen: false
+  dropdownOpen: false,
+  email: '',
+  password: ''
 };
 
 const user = (state = initialState, action) => {
@@ -68,7 +74,7 @@ const user = (state = initialState, action) => {
     case SIGN_IN_REQ:
       return {...state, fetching: true, signInFail: false };
     case SIGN_OUT:
-      return {...state, fetching: false, loggedIn: false, email: undefined, id: undefined};
+      return {...state, fetching: false, loggedIn: false, email: undefined, id: undefined, password: undefined};
     case SIGN_IN_RES:
       return {...state, fetching: false, loggedIn: true, signInFail: false};
     case SIGN_IN_FAIL:
@@ -79,6 +85,10 @@ const user = (state = initialState, action) => {
       return {...state, dropdownOpen: !state.dropdownOpen};
     case HIDE_DROPDOWN:
       return {...state, dropdownOpen: false};
+    case EMAIL_INPUT_CHANGE:
+      return {...state, email: action.email};
+    case PASSWORD_INPUT_CHANGE:
+      return {...state, password: action.password};
     default:
       return state;
   }

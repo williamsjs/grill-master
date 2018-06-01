@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { DragSource, DropTarget } from 'react-dnd';
+import { XYCoord } from 'dnd-core';
 
 const styles = {
 	border: '1px dashed gray',
@@ -12,7 +13,10 @@ const styles = {
 
 const itemSource = {
   beginDrag(props) {
-    return { };
+    return {
+      id: props.id,
+      index: props.index
+     };
   }
 };
 
@@ -21,6 +25,12 @@ function collect(connect, monitor) {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging()
   };
+}
+
+const itemTarget = {
+  hover(props, monitor, component) {
+
+  }
 }
 
 class SourceDraggableItem extends Component {

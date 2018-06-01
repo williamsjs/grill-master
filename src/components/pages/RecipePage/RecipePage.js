@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { deleteRecipe } from '../../../js/ducks/recipes';
-import { getRecipe, updateCurrentRecipe, saveCurrentRecipe } from '../../../js/ducks/currentRecipe';
+import { getRecipe, updateCurrentRecipe, saveCurrentRecipe, clearRecipe } from '../../../js/ducks/currentRecipe';
 import RecipeForm from './RecipeForm/RecipeForm';
 import BackButton from '../../shared/BackButton/BackButton';
 import LoadingOverlay from '../../shared/LoadingOverlay/LoadingOverlay';
 import Alert from '../../shared/Alert/Alert';
 
-const mapDispatchToProps = dispatch => ({
-  getRecipe: id => dispatch(getRecipe(id)),
-  updateCurrentRecipe: (name, id) => dispatch(updateCurrentRecipe(name, id)),
-  saveCurrentRecipe: (name, id) => dispatch(saveCurrentRecipe(name, id)),
-  deleteRecipe: id => dispatch(deleteRecipe(id))
-});
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    getRecipe: getRecipe,
+    updateCurrentRecipe: updateCurrentRecipe,
+    saveCurrentRecipe: saveCurrentRecipe,
+    deleteRecipe: deleteRecipe,
+    clearRecipe: clearRecipe
+  }, dispatch) 
+);
 
 const mapStateToProps = state => ({
   recipe: state.currentRecipe
@@ -40,6 +44,10 @@ class ConnectedRecipePage extends Component {
     }
 
     window.scrollTo(0, 0);
+  }
+
+  componentWillUnmount() {
+    this.props.clearRecipe();
   }
 
   saveRecipe(e) {

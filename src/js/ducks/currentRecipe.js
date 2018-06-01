@@ -10,6 +10,7 @@ const UPDATE_CURRENT_RECIPE_RES = 'UPDATE_CURRENT_RECIPE_RES'
 const UPDATE_CURRENT_RECIPE = 'UPDATE_CURRENT_RECIPE';
 const ADD_INGREDIENT = 'ADD_INGREDIENT';
 const ADD_INSTRUCTION = 'ADD_INSTRUCTION';
+const CLEAR_RECIPE = 'CLEAR_RECIPE';
 
 const requestRecipe = () => ({type: REQUEST_RECIPE});
 const receiveRecipe = recipe => ({type: RECEIVE_RECIPE, recipe: recipe});
@@ -34,6 +35,8 @@ export const updateCurrentRecipeReq = () => {
 export const updateCurrentRecipeRes = () => {
   return {type: UPDATE_CURRENT_RECIPE_RES};
 }
+
+export const clearRecipe = () => ({type: CLEAR_RECIPE});
 
 export function saveCurrentRecipe(name, id) {
   return function(dispatch) {
@@ -90,6 +93,8 @@ const currentRecipe = (state = initialState, action) => {
       return {...state, ingredients: state.ingredients.concat(action.name)};
     case ADD_INSTRUCTION:
       return {...state, instructions: state.instructions.concat(action.name)};
+    case CLEAR_RECIPE:
+      return {...state, instructions: [], ingredients: []};
     default:
       return state;
   }

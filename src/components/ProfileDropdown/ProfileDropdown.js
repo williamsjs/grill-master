@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthForm from '../shared/AuthForm/AuthForm';
+import AuthForm from '../Auth/AuthForm/AuthForm';
 import DropdownMenu from '../shared/DropdownMenu/DropdownMenu';
 import DropdownBtn from '../shared/DropdownBtn/DropdownBtn';
 import IoIosContact from 'react-icons/lib/io/ios-contact';

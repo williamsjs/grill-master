@@ -12,4 +12,4 @@ const AppContainer = () => (
   </div>
 );
 
-export default  DragDropContext(HTML5Backend)(AppContainer);
+export default DragDropContext(HTML5Backend)(AppContainer);

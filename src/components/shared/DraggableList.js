@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import DraggableItem from './DraggableItem';
 
-const DraggableList = ({items}) => {
-  return (
-    <div className="draggable-list">
-      {items.map(item => <DraggableItem item={item} />)}
-    </div>
-  );
-};
+class DraggableList extends Component {
+  render() {
+    const { items } = this.props;
+
+    return (
+      <div className="draggable-list">
+        {items.map((item, i) => <DraggableItem item={item} key={i} id={i} index={i} />)}
+      </div>
+    );
+  }
+}
 
 export default DraggableList;

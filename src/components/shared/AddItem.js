@@ -14,7 +14,7 @@ const AddItem = ({addItem, placeholder}) => {
 
   return (
     <div>
-      <input style={{height: '30px', marginLeft: '20px'}} ref={node => input = node} onKeyPress={handleEvent} type="text" placeholder={placeholder} />
+      <input style={{height: '30px', marginLeft: '40px', width: '200px'}} ref={node => input = node} onKeyPress={handleEvent} type="text" placeholder={placeholder} />
       <AddBtn onClick={handleEvent} />
     </div>
   );
