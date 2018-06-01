@@ -76,13 +76,12 @@ class ConnectedRecipePage extends Component {
           Recipe Saved!
         </Alert>
 
-        {recipe.fetching ?  
-                <LoadingOverlay /> 
-                : <RecipeForm 
-                  recipe={recipe} 
-                  onChange={this.onChange} 
-                  onSubmit={this.saveRecipe} 
-                  onClick={this.delete} />
+        {recipe.fetching ? <LoadingOverlay /> 
+                         : <RecipeForm 
+                           recipe={recipe} 
+                           onChange={this.onChange} 
+                           onSubmit={this.saveRecipe} 
+                           onClick={this.delete} />
         }
       </div>
     ); 
