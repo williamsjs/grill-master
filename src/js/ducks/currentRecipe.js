@@ -38,9 +38,18 @@ export const updateCurrentRecipeRes = () => {
 
 export const clearRecipe = () => ({type: CLEAR_RECIPE});
 
+function saveIngInst(getState) {
+  const recipeId = getState()
+  if (!recipeId) return;
+  
+
+}
+
 export function saveCurrentRecipe(name, id) {
-  return function(dispatch) {
+  return function(dispatch, getState) {
     dispatch(updateCurrentRecipeReq());
+
+    saveIngInst(getState);
     const reqType = id ? 'PUT' : 'POST';
     const baseUrl = `${appUrl}/recipes/`;
     const url = id ? baseUrl + id : baseUrl;
