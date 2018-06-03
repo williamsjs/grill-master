@@ -9,7 +9,7 @@
   margin-left: 120px;
   transition: all 1s;
 
-  @include medium-to-small() {
+  @include small() {
     display: inline-block;
   }
 }

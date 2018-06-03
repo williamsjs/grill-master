@@ -2,123 +2,111 @@
 @import '../../styles/partials/variables';
 
 .main-nav {
-    width: 100%;
-    position: fixed;
-    padding-top: 15px;
-    padding-bottom: 20px;
-    display: flex;
-    justify-content: flex-end;
-    font-family: $primary-font;
-    transition: background-color .2s ease-in;
-    transition: margin-left 1s;
-    z-index: 1;
-  
-    .title {
-      color: $primary;
-      font-family: $primary-font;
-      margin-right: auto;
-      font-size: 26px;
-      letter-spacing: .05rem;
-      text-shadow: 1px 1px 1px #000;
+  position: fixed;
+  padding-top: 15px;
+  padding-bottom: 20px;
+  display: flex;
+  font-family: $primary-font;
+  transition: background-color .2s ease-in;
+  transition: margin-left 1s;
+  flex-flow: column;
+  justify-content: flex-start;
+  width: 250px;
+  height: 100%;
+  background: $ocean;
 
-      a {
-        color: $lemon;
-      }
-    }
-  
-    input[type="search"] {
-      border-radius: 3px;
-      padding-left: 10px;
-    }
-  
-    .search-btn {
-      margin-left: -32px;
-      border-radius: 0 3px 3px 0;
-      height: 22px;
-      @include remove-props(border-right, border-top, border-bottom);
-      background: $watermelon;
-      color: $primary;
-  
-      &:hover {
-        background: $primary;
-        cursor: pointer;
-        color: $watermelon;
-      }
-    }
-  
-    .nav-item a:hover {
+  .title {
+    color: $primary;
+    font-family: $primary-font;
+    margin-right: auto;
+    font-size: 26px;
+    letter-spacing: .05rem;
+    text-shadow: 1px 1px 1px #000;
+
+    a {
       color: $lemon;
     }
-  
-    > * {
-      margin: auto 20px;
-      font-size: 18px;
-    }
-  
-    .profile {
-      font-size: 24px;
-      margin-left: 0;
-    }
-  
-    .profile-text {
-      display: none;
-    }
-  
-    @include medium-to-small() {
-      flex-flow: column;
-      justify-content: flex-start;
-      width: 250px;
-      height: 100%;
-      background: $ocean;
-  
-      .profile-text {
-        display: inline-block;
-      }
-  
-      .nav-item {
-        margin: 30px 20px;
-      }
-  
-      input[type="search"] {
-        width: 200px;
-      }
-  
-      .search-item {
-        order: 2;
-      }
-  
-      .nav-item.profile {
-        margin-left: 20px;
-        order: 3;
-        font-size: 18px;
-      }
-  
-      .title {
-        margin-top: 0;
-        margin-bottom: 15px;
-        order: 1;
-      }
-  
-      > * {
-        order: 4;
-      }
-    }
-  
-    .link-active {
-      padding-bottom: 4px;
-      border-bottom: 3px solid $lemon;
-      border-radius: 3px;
-    }
-  
   }
-  
-  .closed {
-    @include medium-to-small() {
-      margin-left: -250px;
-      transition: margin-left 1s;
+
+  input[type="search"] {
+    border-radius: 3px;
+    padding-left: 10px;
+  }
+
+  .search-btn {
+    margin-left: -32px;
+    border-radius: 0 3px 3px 0;
+    height: 22px;
+    @include remove-props(border-right, border-top, border-bottom);
+    background: $watermelon;
+    color: $primary;
+
+    &:hover {
+      background: $primary;
+      cursor: pointer;
+      color: $watermelon;
     }
   }
-  
-  .scrolled {
-    background-color: $ocean;
+
+  .nav-item a:hover {
+    color: $lemon;
   }
+
+  > * {
+    margin: auto 20px;
+    font-size: 18px;
+    order: 4;
+  }
+
+  .profile {
+    font-size: 24px;
+    margin-left: 0;
+  }
+
+  .profile-text {
+    display: none;
+  }
+
+  .profile-text {
+    display: inline-block;
+  }
+
+  .nav-item {
+    margin: 30px 20px;
+  }
+
+  input[type="search"] {
+    width: 200px;
+  }
+
+  .search-item {
+    order: 2;
+  }
+
+  .nav-item.profile {
+    margin-left: 20px;
+    order: 3;
+    font-size: 18px;
+  }
+
+  .title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    order: 1;
+  }
+}
+  
+.link-active {
+  padding-bottom: 4px;
+  border-bottom: 3px solid $lemon;
+  border-radius: 3px;
+}
+
+.closed {
+  margin-left: -250px;
+  transition: margin-left 1s;
+}
+
+.scrolled {
+  background-color: $ocean;
+}

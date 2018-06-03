@@ -4,6 +4,12 @@
   }
 }
 
+@mixin large-to-medium() {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
 @mixin medium-to-small() {
   @media screen and (max-width: 1024px) {
     @content;
