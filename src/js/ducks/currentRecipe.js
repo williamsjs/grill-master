@@ -39,7 +39,7 @@ export const updateCurrentRecipeRes = () => {
 export const clearRecipe = () => ({type: CLEAR_RECIPE});
 
 function saveIngInst(getState) {
-  const recipeId = getState()
+  const recipeId = getState().currentRecipe.id;
   if (!recipeId) return;
   
 
@@ -99,9 +99,9 @@ const currentRecipe = (state = initialState, action) => {
     case UPDATE_CURRENT_RECIPE_RES:
       return {...state, saved: true};
     case ADD_INGREDIENT:
-      return {...state, ingredients: state.ingredients.concat(action.name)};
+      return {...state, ingredients: [...state.ingredients, action.name]};
     case ADD_INSTRUCTION:
-      return {...state, instructions: state.instructions.concat(action.name)};
+      return {...state, instructions: [...state.instructions, action.name]};
     case CLEAR_RECIPE:
       return {...state, instructions: [], ingredients: []};
     default:

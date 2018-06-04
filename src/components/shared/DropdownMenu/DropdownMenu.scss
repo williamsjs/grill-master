@@ -2,15 +2,10 @@
 @import '../../../styles/partials/mixins';
 
 .dropdown-container {
-  right: 7px;
-  position: absolute;
-  @include medium-to-small() {
-    left: 0;
-    right: auto;
-    position: static;
-  }
+  margin-top: 10px;
 }
+
 .dropdown-body {
-  background: $watermelon;
-  color: $primary;
+  background: #54CEFD;
+  color: $watermelon;
 }

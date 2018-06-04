@@ -9,7 +9,7 @@ const ImgUploader = ({item, onClick}) => {
     <Dropzone style={{}}>
       <div className="img-uploader">
         <div className="img-overlay">
-          <DeleteBtn onClick={onClick} />
+          <DeleteBtn onClick={onClick} style={{left: '0'}} />
           <div className="upload-icon"><GoCloudUpload /></div>
         </div>
         <img src="https://picsum.photos/200/200" alt={item.name} />

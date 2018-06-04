@@ -23,7 +23,7 @@ const Login = ({handleSubmit, handleChange, email, password, fetching, failure})
           <p className="alert-danger" style={{color: 'white'}}>Invalid Credentials</p>
         }
         
-        <button className="btn bs-success form-submit" type="submit"><IoLogIn /> Login</button>
+        <button className="btn form-submit" type="submit"><IoLogIn /> Login</button>
       </form>
     </div>
   )
