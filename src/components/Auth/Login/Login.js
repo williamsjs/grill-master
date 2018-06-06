@@ -1,21 +1,23 @@
 import React from 'react';
 import ReactLoading from 'react-loading';
 import IoLogIn from 'react-icons/lib/io/log-in';
+import GoMailRead from 'react-icons/lib/go/mail-read';
+import GoLock from 'react-icons/lib/go/lock';
+import './Login.scss';
 
 const Login = ({handleSubmit, handleChange, email, password, fetching, failure}) => {
-
-  const borderRadius = () => ({borderRadius: '25px'});
-
   return (
     <div className="login-form">
       <form onSubmit={handleSubmit} onClick={e => e.stopPropagation()} className="form-container center" style={{borderRadius: '0 0 5px 5px'}}>
-        <div className="form-group center">
-          <label className="form-label">Email: </label>
-          <input onChange={handleChange} value={email} style={borderRadius()} className="form-control" type="text" placeholder="email" />
-        </div>
         <div className="form-group">
-          <label className="form-label">Password: </label>
-          <input onChange={handleChange} value={password} style={borderRadius()} className="form-control" type="password" placeholder="password" />
+          <div className="auth-input">
+            <GoMailRead className="position-absolute auth-icon" />
+            <input onChange={handleChange} value={email} className="auth-input" type="text" />
+          </div>
+        </div>
+        <div className="form-group auth-input">
+          <GoLock className="position-absolute auth-icon" />
+          <input onChange={handleChange} value={password} className="auth-input" type="password" />
         </div>
 
         {fetching &&

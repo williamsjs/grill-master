@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { signIn, signOut, emailInputChange, passwordInputChange } from '../../../js/ducks/user';
 import Logout from '../Logout';
-import Login from '../Login';
+import Login from '../Login/Login';
 import './AuthForm.scss';
 
 const mapDispatchToProps = dispatch => (

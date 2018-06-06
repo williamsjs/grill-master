@@ -1,0 +1,14 @@
+.auth-input {
+  position: relative;
+
+  .auth-input {
+    border-radius: 25px 0 0 25px;
+    padding-left: 25px;
+  }
+
+  .auth-icon {
+    margin-top: 7px;
+    margin-left: 5px;
+    z-index: 1;
+  }
+}
